@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_one_c3_team/features/forget_password/presentation/screens/forget_password.dart';
-import '../../features/forget_password/presentation/screens/reset_password.dart';
-import '../../features/forget_password/presentation/screens/verification_code.dart';
+import 'package:project_one_c3_team/features/forget_password/presentation/screens/forget_password/view/forget_password.dart';
+import '../../features/forget_password/presentation/screens/reset_password/view/reset_password.dart';
+import '../../features/forget_password/presentation/screens/verification_code/verification_code.dart';
 import '../../login_Screen/login_screen.dart';
 import '../../singUp/signup.dart';
 import 'App_Routs_names.dart';

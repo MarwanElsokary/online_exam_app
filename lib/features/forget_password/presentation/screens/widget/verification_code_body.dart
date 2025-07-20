@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:project_one_c3_team/features/forget_password/presentation/screens/reset_password.dart';
+import 'package:project_one_c3_team/features/forget_password/presentation/screens/reset_password/view/reset_password.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_text.dart';
 import '../../../../../core/utils/font_manager.dart';
