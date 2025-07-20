@@ -42,7 +42,7 @@ class _ForgetPasswordState extends State<ForgetPasswordBody> {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: AppSize.s16,
+            horizontal: AppSize.s14,
             vertical: AppSize.s24,
           ),
           child: Column(
