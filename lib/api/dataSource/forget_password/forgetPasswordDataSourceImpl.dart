@@ -3,7 +3,7 @@ import 'package:project_one_c3_team/api/network/api_service.dart';
 
 import '../../../core/utils/app_text.dart';
 import '../../../core/utils/connection_manager.dart';
-import '../../../features/forget_password/data/data_sources/forgot_password_remote_data_source.dart';
+import '../../../features/Auth/forget_password/data/data_sources/forgot_password_remote_data_source.dart';
 import '../../request/forget_password_request/forget_password_email_request.dart';
 
 @Injectable(as: ForgetPasswordEmailRemoteDataSource)

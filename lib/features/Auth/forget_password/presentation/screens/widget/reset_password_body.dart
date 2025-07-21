@@ -4,8 +4,7 @@ import 'package:project_one_c3_team/core/utils/app_color.dart';
 import 'package:project_one_c3_team/core/utils/app_text.dart';
 import 'package:project_one_c3_team/core/utils/font_manager.dart';
 import 'package:project_one_c3_team/core/utils/values_manager.dart';
-import 'package:project_one_c3_team/login_Screen/login_screen.dart';
-
+import '../../../../login_Screen/login_screen.dart';
 import '../reset_password/view_model/reset_password_cubit.dart';
 
 class ResetPasswordBody extends StatefulWidget {

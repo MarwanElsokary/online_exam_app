@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_text.dart';
-import '../../../../../core/utils/font_manager.dart';
-import '../../../../../core/utils/values_manager.dart';
+import '../../../../../../core/utils/app_color.dart';
+import '../../../../../../core/utils/app_text.dart';
+import '../../../../../../core/utils/font_manager.dart';
+import '../../../../../../core/utils/values_manager.dart';
 
 class ForgetPasswordAppbar extends StatelessWidget
     implements PreferredSizeWidget {

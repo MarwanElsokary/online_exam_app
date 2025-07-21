@@ -3,7 +3,7 @@ import 'package:project_one_c3_team/api/network/api_service.dart';
 import 'package:project_one_c3_team/api/request/email_verification_request/email_verification_request.dart';
 import '../../../core/utils/app_text.dart';
 import '../../../core/utils/connection_manager.dart';
-import '../../../features/forget_password/data/data_sources/email_verification_remote_data_source.dart';
+import '../../../features/Auth/forget_password/data/data_sources/email_verification_remote_data_source.dart';
 
 @Injectable(as: EmailVerificationRemoteDataSource)
 class EmailVerificationRemoteDataSourceImpl
