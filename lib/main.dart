@@ -1,6 +1,19 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam/Features/Auth/Login/presentation/pages/Login.dart';
+import 'package:online_exam/Features/Auth/Sign_up/presentation/pages/sign_up%20screen.dart';
 
-void main() {
+import 'Core/DI/DI.dart';
+import 'Core/Locale/PrefsHelper.dart';
+import 'Core/Resources/bloc observer.dart';
+
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await PrefsHelper.init();
+  Bloc.observer=MyBlocObserver();
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -29,8 +42,12 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:Signup()
+      /* RouteGenerator.getRoute,
+      initialRoute: PrefsHelper().getToken()!=null?Routes.signInRoute:
+      Routes.signUpRoute,*/
     );
   }
 }
@@ -104,7 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            const Text(
+              'You have pushed the button this many times:',
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
