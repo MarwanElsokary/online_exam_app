@@ -25,6 +25,10 @@ import '../../Features/Auth/Sign_up/domain/use_cases/SignUpUseCase.dart'
     as _i492;
 import '../../Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart'
     as _i3;
+import '../../Features/Home/data/data_source/getAllSubject/subject_data_source.dart'
+    as _i633;
+import '../../Features/Home/data/repositories/subjects_repo_impl.dart' as _i263;
+import '../../Features/Home/domain/repositories/subjects_repo.dart' as _i928;
 import '../Remote/Api/APIClient.dart' as _i1040;
 import '../Remote/Api/network_module.dart' as _i709;
 
@@ -44,6 +48,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1040.APIClient>(() => _i1040.APIClient(gh<_i361.Dio>()));
     gh.factory<_i641.Signupdatasource>(
         () => _i489.SignUpDataSourceImpl(gh<_i1040.APIClient>()));
+    gh.factory<_i928.SubjectsRepository>(
+        () => _i263.SubjectsRepoImpl(gh<_i633.SubjectDataSource>()));
     gh.factory<_i545.SignUpRepo>(
         () => _i934.SignUpRepoImpl(gh<_i641.Signupdatasource>()));
     gh.factory<_i492.SignUpUseCase>(

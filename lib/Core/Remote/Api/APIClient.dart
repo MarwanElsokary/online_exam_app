@@ -3,6 +3,8 @@ import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dar
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
+import '../response/all_subject/subject_response.dart';
+
 part 'APIClient.g.dart';
 
 @injectable
@@ -21,4 +23,10 @@ abstract class APIClient {
       @Field() required String phone,
       @Field() required String pass,
       @Field() required String repass});
+
+  @GET("/v1/subjects")
+  Future<AllSubjectResponse> getAllSubjects({
+    @Query("page") int page = 1,
+    @Query("limit") int limit = 10,
+  });
 }
