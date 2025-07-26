@@ -11,8 +11,8 @@ part 'login_state.dart';
 
 @injectable
 class LogINCubit extends Cubit<LogINState> {
-  final Dio dio;
-  LogINCubit(this.loginusecase,this.dio) : super(LogINInitial());
+
+  LogINCubit(this.loginusecase) : super(LogINInitial());
   LoginUseCase loginusecase;
 
   loginuser({

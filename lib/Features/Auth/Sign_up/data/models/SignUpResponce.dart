@@ -26,7 +26,7 @@ class SignUpResponce {
     return _$SignUpResponceToJson(this);
   }
   SignUpEntity tosignupentity(){
-    return SignUpEntity(token: token,user: user,message: message);
+    return SignUpEntity(token: token,message: message,user: user);
 
   }
 }
