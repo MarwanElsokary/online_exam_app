@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam/Core/DI/di.dart';
+import 'package:online_exam/Core/DI/DI.dart';
 import 'package:online_exam/Core/Locale/PrefsHelper.dart';
 import 'package:online_exam/Core/RoutesManager/routes.dart';
 import 'package:online_exam/Core/Widgets/CustomTextField.dart';
