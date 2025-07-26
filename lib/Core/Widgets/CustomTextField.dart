@@ -4,9 +4,6 @@ class CustomTextField extends StatelessWidget{
   final String hintText;
   final String lableText;
   final bool isPassword;
-
-
-
   final TextEditingController? controller;
   final String? Function(String?)? validator;
    CustomTextField({

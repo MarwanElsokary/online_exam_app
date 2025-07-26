@@ -8,7 +8,7 @@ class PrefsHelper{
     static Future<bool>SaveToken(String token){
    return prefs!.setString("token", token);
   }
-  String? getToken(){
+ static String? getToken(){
      return prefs!.getString("token");
   }
   static cleartoken(){

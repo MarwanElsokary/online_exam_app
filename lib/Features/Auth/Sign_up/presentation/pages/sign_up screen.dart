@@ -96,7 +96,7 @@ class _SignupState extends State<Signup> {
                       } //else if (!usernameRegex.hasMatch(val)) {
                        // return 'enter valid username';}
                        else {
-                        return val.isEmpty ? "username can't be empty" : " ";
+                         return null;
                       }
                     },
                   ),
@@ -240,16 +240,15 @@ class _SignupState extends State<Signup> {
                               ));
                     } else if (state is SignUpSuccessState) {
                       PrefsHelper.SaveToken(state.signupentity.token!);
-                      Navigator.pushReplacementNamed(context, Routes.homeRoute);
+
                     }
                   },
                   builder: (context, state) {
                     var cubit = BlocProvider.of<SignUpCubit>(context);
                     return ElevatedButton(
                       onPressed: () {
-                        print("Button Pressed");
+                        Navigator.pushReplacementNamed(context, Routes.homeRoute);
                         if (formkey.currentState!.validate()) {
-                          print("Form is valid");
                           cubit.registeruser(
                               firstname: firstcontroller.text,
                               secondname: secondcontroller.text,
@@ -258,8 +257,10 @@ class _SignupState extends State<Signup> {
                               phone: phonecontroller.text,
                               pass: passcontroller.text,
                               repass: confirmcontroller.text);
+
+
                         }
-                        print("First Name: ${firstcontroller.text}");
+
                       },
                       child: Text("SignUp", style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
