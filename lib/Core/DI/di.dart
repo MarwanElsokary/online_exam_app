@@ -6,8 +6,8 @@ import 'di.config.dart';
 
 final getIt = GetIt.instance;
 
-// @lazySingleton
-// Dio provideDio() => Dio();
+@lazySingleton
+Dio provideDio() => Dio();
 
 @InjectableInit(
   initializerName: 'init', // default

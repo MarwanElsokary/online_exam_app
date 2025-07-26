@@ -34,9 +34,7 @@ abstract class APIClient {
     @Query("subject") required String subjectId,
   });
 
-
-  // sec
-
+  
   @GET("/v1/exams/{id}")
   Future<ExamResponse> getExamById(
     @Path("id") String examId,
