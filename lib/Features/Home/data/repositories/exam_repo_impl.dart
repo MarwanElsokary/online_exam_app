@@ -1,11 +1,11 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/Features/Home/data/data_source/exams_data_source.dart';
 import '../../../../Core/Remote/response/responses/exam_response.dart';
 import '../../domain/repositories/exam_repo.dart';
 
 @Injectable(as: ExamRepo)
-
 class ExamRepoImpl implements ExamRepo {
-  ExamRepo _ExamRepo;
+  ExamsDataSource _ExamRepo;
 
   ExamRepoImpl(this._ExamRepo);
 
@@ -19,14 +19,6 @@ class ExamRepoImpl implements ExamRepo {
     bool? active,
     String? createdAt,
   }) {
-    return _ExamRepo.getExams(
-      id: id,
-      title: title,
-      duration: duration,
-      subject: subject,
-      numberOfQuestions: numberOfQuestions,
-      active: active,
-      createdAt: createdAt,
-    );
+    return _ExamRepo.getExams();
   }
 }
