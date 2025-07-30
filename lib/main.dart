@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam/Core/RoutesManager/Routs%20Generator.dart';
+import 'package:online_exam/Core/RoutesManager/routes.dart';
 import 'package:online_exam/Features/Auth/Login/presentation/pages/Login.dart';
 import 'package:online_exam/Features/Auth/Sign_up/presentation/pages/sign_up%20screen.dart';
+import 'package:online_exam/Features/Home/presentation/pages/Home_Page.dart';
 
 import 'Core/DI/DI.dart';
 import 'Core/Locale/PrefsHelper.dart';
@@ -44,10 +47,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:Signup()
-      /* RouteGenerator.getRoute,
-      initialRoute: PrefsHelper().getToken()!=null?Routes.signInRoute:
-      Routes.signUpRoute,*/
+   // builder: (context, child) => MaterialApp(
+      home:HomeScreen()
+      /*child,
+      onGenerateRoute:RouteGenerator.getRoute,
+      initialRoute: PrefsHelper.getToken()!=null?Routes.signInRoute:
+      Routes.signUpRoute,
+    )*/
     );
   }
 }

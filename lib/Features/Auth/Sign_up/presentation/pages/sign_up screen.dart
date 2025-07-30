@@ -32,6 +32,7 @@ class _SignupState extends State<Signup> {
   late TextEditingController phonecontroller;
 
   late final SignUpCubit viewModel;
+
   void initState() {
     super.initState();
     usercontroller = TextEditingController();
@@ -56,10 +57,9 @@ class _SignupState extends State<Signup> {
     confirmcontroller.dispose();
   }
 
-
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => viewModel,
@@ -94,9 +94,9 @@ class _SignupState extends State<Signup> {
                       } else if (val.isEmpty) {
                         return 'this field is required';
                       } //else if (!usernameRegex.hasMatch(val)) {
-                       // return 'enter valid username';}
-                       else {
-                         return null;
+                      // return 'enter valid username';}
+                      else {
+                        return null;
                       }
                     },
                   ),
@@ -225,6 +225,7 @@ class _SignupState extends State<Signup> {
                                       color: Colors.black),
                                 ),
                               ));
+                      Navigator.pop(context);
                     } else if (state is SignUpErrorState) {
                       showDialog(
                           context: context,
@@ -238,16 +239,16 @@ class _SignupState extends State<Signup> {
                                   ),
                                 ),
                               ));
+                      Navigator.pop(context);
                     } else if (state is SignUpSuccessState) {
                       PrefsHelper.SaveToken(state.signupentity.token!);
-
+                      Navigator.pushReplacementNamed(context, Routes.mainRoute);
                     }
                   },
                   builder: (context, state) {
                     var cubit = BlocProvider.of<SignUpCubit>(context);
                     return ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, Routes.homeRoute);
                         if (formkey.currentState!.validate()) {
                           cubit.registeruser(
                               firstname: firstcontroller.text,
@@ -257,12 +258,10 @@ class _SignupState extends State<Signup> {
                               phone: phonecontroller.text,
                               pass: passcontroller.text,
                               repass: confirmcontroller.text);
-
-
                         }
-
                       },
-                      child: Text("SignUp", style: TextStyle(color: Colors.white)),
+                      child:
+                          Text("SignUp", style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         textStyle: TextStyle(color: Colors.white),

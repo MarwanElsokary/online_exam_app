@@ -33,13 +33,13 @@ class _APIClient implements APIClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {
-      'firstname': firstname,
-      'secondname': secondname,
+      'firstName': firstname,
+      'lastName': secondname,
       'username': username,
       'email': email,
       'phone': phone,
-      'pass': pass,
-      'repass': repass,
+      'password': pass,
+      'rePassword': repass,
     };
     final _options = _setStreamType<SignUpResponce>(
       Options(method: 'POST', headers: _headers, extra: _extra)

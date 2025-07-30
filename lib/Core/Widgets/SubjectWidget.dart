@@ -4,7 +4,8 @@ import 'package:online_exam/Core/RoutesManager/routes.dart';
 class Subjectwidget extends StatelessWidget{
   Icon icon;
   String subjectname;
-  Subjectwidget({super.key, required this.icon, required this.subjectname});
+  String id;
+  Subjectwidget({super.key, required this.icon, required this.subjectname, required this.id});
   @override
   Widget build(BuildContext context) {
    return Padding(

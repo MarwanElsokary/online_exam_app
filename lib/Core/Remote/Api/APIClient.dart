@@ -17,13 +17,13 @@ abstract class APIClient {
 
   @POST('/v1/auth/signup')
   Future<SignUpResponce> signup(
-      {@Field() required String firstname,
-      @Field() required String secondname,
-      @Field() required String username,
-      @Field() required String email,
-      @Field() required String phone,
-      @Field() required String pass,
-      @Field() required String repass});
+      {@Field("firstName") required String firstname,
+      @Field("lastName") required String secondname,
+      @Field("username") required String username,
+      @Field("email") required String email,
+      @Field("phone") required String phone,
+      @Field("password") required String pass,
+      @Field("rePassword") required String repass});
 
   @GET("/v1/subjects")
   Future<AllSubjectResponse> getAllSubjects(
