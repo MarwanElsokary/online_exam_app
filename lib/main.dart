@@ -47,13 +47,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-   // builder: (context, child) => MaterialApp(
-      home:HomeScreen()
-      /*child,
+   builder: (context, child) => MaterialApp(
+      home: child,
       onGenerateRoute:RouteGenerator.getRoute,
       initialRoute: PrefsHelper.getToken()!=null?Routes.signInRoute:
       Routes.signUpRoute,
-    )*/
+    )
     );
   }
 }

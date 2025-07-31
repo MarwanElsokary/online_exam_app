@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/Core/DI/DI.dart';
 import 'package:online_exam/Core/Remote/response/responses/subject_response.dart';
 import 'package:online_exam/Core/Resources/ColorsManager.dart';
 import 'package:online_exam/Core/Resources/stringsManager.dart';
 import 'package:online_exam/Core/Widgets/SearchTextField.dart';
 import 'package:online_exam/Core/Widgets/SubjectWidget.dart';
 import 'package:online_exam/Features/Home/domain/usecases/subject_usecase.dart';
+import 'package:online_exam/Features/Home/presentation/Manager/subjects_cubit.dart';
 
 class HomeTab extends StatelessWidget {
-  HomeTab();
 
   final TextEditingController? searchcontroller = TextEditingController();
- List<Subjects> subjects = [];
+  List<Subjects> subjects = [];
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +42,44 @@ class HomeTab extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            Expanded(
-                child: ListView.builder(
-              itemBuilder: (context, index) => Subjectwidget(
-                  icon: Icon((subjects[index].icon ?? Icons.add) as IconData?),
-                  id: subjects[index].Id ?? '',
+            BlocProvider(
+              create: (context) =>
+              getIt<SubjectsCubit>()
+                ..getAllSubjects(),
+              child: BlocBuilder<SubjectsCubit, SubjectsState>(
+                buildWhen: (previous, current) {
+                   if(current is SubjectsSuccesState ||
+                       current is SubjectsLoadingState||current is SubjectsErrorState)
+                    { return true;}
+                   return false;}
 
 
-                  subjectname:subjects[index].name??" ",),
-              itemCount: subjects.length,
-            ))
+                ,builder: (context, state) {
+                  if  (state is SubjectsLoadingState) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (state is SubjectsErrorState) {
+                    return Center(child: Text(state.error));
+                  }
+                  if (state is SubjectsSuccesState) {
+                    subjects = state.subjects as List<Subjects>;
+                  }
+                  return Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) =>
+                            Subjectwidget(
+                              icon: Icon(
+                                  (subjects[index].icon ??
+                                      Icons.add) as IconData?),
+                              id: subjects[index].Id ?? '',
+
+
+                              subjectname: subjects[index].name ?? " ",),
+                        itemCount: subjects.length,
+                      ));
+                },
+              ),
+            )
           ],
         ));
   }

@@ -9,7 +9,7 @@ import 'package:online_exam/Features/Home/domain/repositories/subjects_repo.dart
 import 'package:online_exam/Features/Home/domain/usecases/subject_usecase.dart';
 
 part 'subjects_state.dart';
-
+@injectable
 class SubjectsCubit extends Cubit<SubjectsState> {
   SubjectUseCase subjectUseCase;
   @factoryMethod

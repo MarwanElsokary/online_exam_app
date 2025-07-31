@@ -242,7 +242,7 @@ class _SignupState extends State<Signup> {
                       Navigator.pop(context);
                     } else if (state is SignUpSuccessState) {
                       PrefsHelper.SaveToken(state.signupentity.token!);
-                      Navigator.pushReplacementNamed(context, Routes.mainRoute);
+
                     }
                   },
                   builder: (context, state) {
@@ -258,6 +258,7 @@ class _SignupState extends State<Signup> {
                               phone: phonecontroller.text,
                               pass: passcontroller.text,
                               repass: confirmcontroller.text);
+                          Navigator.pushReplacementNamed(context, Routes.mainRoute);
                         }
                       },
                       child:
