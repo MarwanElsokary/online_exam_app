@@ -26,10 +26,15 @@ import '../../Features/Auth/Sign_up/domain/use_cases/SignUpUseCase.dart'
 import '../../Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart'
     as _i3;
 import '../../Features/Home/data/data_source/exams_data_source.dart' as _i434;
+import '../../Features/Home/data/data_source/questions_data_source.dart'
+    as _i397;
 import '../../Features/Home/data/data_source/subject_data_source.dart' as _i4;
 import '../../Features/Home/data/repositories/exam_repo_impl.dart' as _i697;
+import '../../Features/Home/data/repositories/questions_repo_impl.dart'
+    as _i773;
 import '../../Features/Home/data/repositories/subjects_repo_impl.dart' as _i263;
 import '../../Features/Home/domain/repositories/exam_repo.dart' as _i404;
+import '../../Features/Home/domain/repositories/questions_repo.dart' as _i230;
 import '../../Features/Home/domain/repositories/subjects_repo.dart' as _i928;
 import '../../Features/Home/domain/usecases/exams_usecase.dart' as _i40;
 import '../../Features/Home/domain/usecases/subject_usecase.dart' as _i1025;
@@ -38,6 +43,7 @@ import '../Locale/PrefsHelper.dart' as _i338;
 import '../Remote/Api/APIClient.dart' as _i1040;
 import '../Remote/Api/network_module.dart' as _i709;
 import '../Remote/dataSource/exams_data_source_impl.dart' as _i990;
+import '../Remote/dataSource/questions_data_source_impl.dart' as _i670;
 import '../Remote/dataSource/subject_data_source_impl.dart' as _i1064;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -57,6 +63,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1040.APIClient>(() => _i1040.APIClient(gh<_i361.Dio>()));
     gh.factory<_i641.Signupdatasource>(
         () => _i489.SignUpDataSourceImpl(gh<_i1040.APIClient>()));
+    gh.factory<_i397.QuestionsDataSource>(
+        () => _i670.QuestionsDataSourceImpl(gh<_i1040.APIClient>()));
     gh.factory<_i434.ExamsDataSource>(
         () => _i990.ExamsDataSourceImpl(gh<_i1040.APIClient>()));
     gh.factory<_i4.SubjectDataSource>(
@@ -67,6 +75,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i263.SubjectsRepoImpl(gh<_i4.SubjectDataSource>()));
     gh.factory<_i545.SignUpRepo>(
         () => _i934.SignUpRepoImpl(gh<_i641.Signupdatasource>()));
+    gh.factory<_i230.QuestionsRepo>(
+        () => _i773.QuestionsRepoImpl(gh<_i397.QuestionsDataSource>()));
     gh.factory<_i40.ExamUseCase>(() => _i40.ExamUseCase(gh<_i404.ExamRepo>()));
     gh.factory<_i1025.SubjectUseCase>(
         () => _i1025.SubjectUseCase(gh<_i928.SubjectsRepository>()));

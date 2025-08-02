@@ -92,10 +92,15 @@ class _APIClient implements APIClient {
   }
 
   @override
-  Future<ExamResponse> getExamsBySubjectId({required String subjectId}) async {
+  Future<ExamResponse> getExamsBySubjectId({
+    required String? token,
+    required String subjectId,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'subject': subjectId};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ExamResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
@@ -119,12 +124,17 @@ class _APIClient implements APIClient {
   }
 
   @override
-  Future<ExamResponse> getExamById(String examId) async {
+  Future<QuestionsResponse> getExamById({
+    required String examId,
+    required String? token,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ExamResponse>(
+    final _options = _setStreamType<QuestionsResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -135,9 +145,9 @@ class _APIClient implements APIClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ExamResponse _value;
+    late QuestionsResponse _value;
     try {
-      _value = ExamResponse.fromJson(_result.data!);
+      _value = QuestionsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

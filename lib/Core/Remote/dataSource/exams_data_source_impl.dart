@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/Core/Locale/PrefsHelper.dart';
 import 'package:online_exam/Core/Remote/Api/APIClient.dart';
 import 'package:online_exam/Features/Home/data/data_source/exams_data_source.dart';
 
@@ -15,8 +16,7 @@ class ExamsDataSourceImpl implements ExamsDataSource {
     String? Id,
   }) async {
     var response = await _cllient.getExamsBySubjectId(
-      subjectId: Id ?? "",
-    );
+        subjectId: Id ?? "", token: PrefsHelper.getToken());
     return response.exam!
         .map((e) => Exam(
               Id: e.Id,

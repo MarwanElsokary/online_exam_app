@@ -5,6 +5,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
 import '../response/responses/exam_response.dart';
+import '../response/responses/questions_response.dart';
 
 part 'APIClient.g.dart';
 
@@ -31,17 +32,13 @@ abstract class APIClient {
 
   @GET("/v1/exams")
   Future<ExamResponse> getExamsBySubjectId({
+    @Header("token") required String? token,
     @Query("subject") required String subjectId,
   });
 
-  
   @GET("/v1/exams/{id}")
-  Future<ExamResponse> getExamById(
-    @Path("id") String examId,
-  );
-
-  // @GET("/v1/questions?exam={id}")
-  // Future<ExamResponse> getExamById(
-  //   @Path("id") String examId,
-  // );
+  Future<QuestionsResponse> getExamById({
+    @Path("id") required String examId,
+    @Header("token") required String? token,
+  });
 }

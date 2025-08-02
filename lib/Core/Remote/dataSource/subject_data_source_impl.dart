@@ -14,7 +14,6 @@ class SubjectDataSourceImpl implements SubjectDataSource {
   @override
   Future<List<Subjects>> getAllSubjects() async {
     var response = await _client.getAllSubjects(token: PrefsHelper.getToken());
-    // return response.subjects?.toList() ?? [];
     return response.subjects!
         .map((e) => Subjects(
               Id: e.Id,
