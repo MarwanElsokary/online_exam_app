@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam/Core/Remote/response/models/subject_dto.dart';
 
-import '../../../../Features/Home/domain/model/subject.dart';
 
 
 part 'questions_response.g.dart';

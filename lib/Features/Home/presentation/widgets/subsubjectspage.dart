@@ -3,6 +3,8 @@ import 'package:online_exam/Core/Resources/stringsManager.dart';
 import 'package:online_exam/Core/Widgets/SubSubjectWidget.dart';
 
 class SubSubjectscreen extends StatelessWidget{
+  const SubSubjectscreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

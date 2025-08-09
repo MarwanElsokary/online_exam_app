@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/Features/Auth/Sign_up/domain/repositories/SignUpRepo.dart';
-import '../../data/models/SignUpResponce.dart';
 
 @injectable
 class SignUpUseCase {

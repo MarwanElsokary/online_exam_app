@@ -1,16 +1,15 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/Core/DI/di.dart';
 import 'package:online_exam/Core/Locale/PrefsHelper.dart';
 import 'package:online_exam/Core/RoutesManager/routes.dart';
 import 'package:online_exam/Core/Widgets/CustomTextField.dart';
-import 'package:online_exam/Features/Auth/Login/presentation/pages/Login.dart';
 import 'package:online_exam/Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart';
-import 'package:get_it/get_it.dart';
 
 class Signup extends StatefulWidget {
   static const String routename = "SignUp";
+
+  const Signup({super.key});
 
   @override
   State<Signup> createState() => _SignupState();
@@ -33,6 +32,7 @@ class _SignupState extends State<Signup> {
 
   late final SignUpCubit viewModel;
 
+  @override
   void initState() {
     super.initState();
     usercontroller = TextEditingController();
@@ -80,7 +80,7 @@ class _SignupState extends State<Signup> {
             key: formkey,
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: CustomTextField(
                     hintText: "Enter Username",
@@ -134,7 +134,7 @@ class _SignupState extends State<Signup> {
                     ),
                   ],
                 ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: CustomTextField(
                       hintText: "Email",
@@ -192,7 +192,7 @@ class _SignupState extends State<Signup> {
                         }),
                   ),
                 ]),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: CustomTextField(
                       hintText: "phone number",
@@ -261,14 +261,14 @@ class _SignupState extends State<Signup> {
                           Navigator.pushReplacementNamed(context, Routes.mainRoute);
                         }
                       },
-                      child:
-                          Text("SignUp", style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         textStyle: TextStyle(color: Colors.white),
                         padding: EdgeInsets.all(20.0),
                         fixedSize: Size(300, 60),
                       ),
+                      child:
+                          Text("SignUp", style: TextStyle(color: Colors.white)),
                     );
                   },
                 ),

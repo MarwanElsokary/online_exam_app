@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget{
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-   CustomTextField({
+   const CustomTextField({super.key, 
     required this.hintText,
      required this.isPassword,
      required this.controller,

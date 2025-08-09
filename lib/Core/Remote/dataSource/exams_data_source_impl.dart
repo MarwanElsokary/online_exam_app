@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam/Core/Locale/PrefsHelper.dart';
 import 'package:online_exam/Core/Remote/Api/APIClient.dart';
 import 'package:online_exam/Features/Home/data/data_source/exams_data_source.dart';
 
@@ -7,16 +6,17 @@ import '../response/responses/exam_response.dart';
 
 @Injectable(as: ExamsDataSource)
 class ExamsDataSourceImpl implements ExamsDataSource {
-  APIClient _cllient;
+  final APIClient _cllient;
 
   ExamsDataSourceImpl(this._cllient);
 
   @override
   Future<List<Exam>> getExams({
-    String? Id,
+    required String id,
+    required String token,
   }) async {
-    var response = await _cllient.getExamsBySubjectId(
-        subjectId: Id ?? "", token: PrefsHelper.getToken());
+    var response =
+        await _cllient.getExamsBySubjectId(subjectId: id, token: token);
     return response.exam!
         .map((e) => Exam(
               Id: e.Id,

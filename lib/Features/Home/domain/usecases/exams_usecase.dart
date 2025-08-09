@@ -5,7 +5,7 @@ import '../../../../Core/Remote/response/responses/exam_response.dart';
 
 @injectable
  class ExamUseCase {
-  ExamRepo _examRepo;
+  final ExamRepo _examRepo;
 
   ExamUseCase(this._examRepo);
 
