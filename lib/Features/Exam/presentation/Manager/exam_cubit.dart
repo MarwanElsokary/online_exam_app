@@ -33,15 +33,8 @@ class ExamCubit extends Cubit<ExamState> {
     emit(ExamLoadingState());
     try {
       questions = await questionsusecase.invoke(
-        examId: examId,
-        token: token,
-        Id: Id,
-        title: title,
-        duration: duration,
-        subject: subject,
-        numberOfQuestions: numberOfQuestions,
-        active: active,
-        createdAt: createdAt,
+        examId: examId ?? "",
+
       );
       emit(ExamSuccesState(questions));
     } catch (error) {

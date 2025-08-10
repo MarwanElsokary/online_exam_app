@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -8,16 +10,21 @@ import 'package:online_exam/Features/Home/domain/repositories/exam_repo.dart';
 import 'package:online_exam/Features/Home/domain/usecases/exams_usecase.dart';
 
 part 'subsubject_state.dart';
-@injectable
 
+@injectable
 class SubsubjectCubit extends Cubit<SubsubjectState> {
   ExamUseCase examUseCase;
+
   @factoryMethod
   SubsubjectCubit(this.examUseCase) : super(SubsubjectInitial());
+
   static SubsubjectCubit get(context) => BlocProvider.of(context);
-  ExamRepo get examRepository => examUseCase.examRepo;
+
+  ExamRepo get examRepository => examUseCase.call.call();
+  // solve this issue by using the call method on examUseCase
   List<Exams> exams = [];
-  Future<void>getallexams() async{
+
+  Future<void> getallexams() async {
     emit(SubsubjectsLoadingState());
     try {
       exams = (await examUseCase.invoke()).cast<Exams>();
@@ -26,5 +33,4 @@ class SubsubjectCubit extends Cubit<SubsubjectState> {
       emit(SubsubjectsErrorState(error.toString()));
     }
   }
-
 }
