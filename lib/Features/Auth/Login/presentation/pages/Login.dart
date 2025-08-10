@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../Core/DI/DI.dart';
 import '../../../../../Core/Locale/PrefsHelper.dart';
-import '../../../../../Core/RoutesManager/routes.dart';
+import '../../../../../Core/Routs/App_Routs_names.dart';
 import '../../../../../Core/Widgets/CustomTextField.dart';
-import '../../../Sign_up/presentation/pages/sign_up screen.dart';
 import '../manager/login_cubit.dart';
 
 class Login extends StatefulWidget {
@@ -44,6 +43,7 @@ class _LoginState extends State<Login> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             centerTitle: false,
             title: Text(
               "Login",
@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
                           PrefsHelper.SaveToken(state.loginentity.token!);
                           WidgetsBinding.instance.addPostFrameCallback((_) {
                             Navigator.pushReplacementNamed(
-                                context, Routes.profileRoute);
+                                context, App_Routs_names.profileRoute);
                           });
                         }
                       },
@@ -180,16 +180,16 @@ class _LoginState extends State<Login> {
                           fontSize: 16,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushReplacementNamed(
-                              context, Signup.routename);
+                      TextButton(
+                        style: TextButton.styleFrom(),
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context,App_Routs_names.signUpScreen);
                         },
                         child: Text(
-                          " Sign Up",
+                          "Signup?",
                           style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 16,
+                            decoration: TextDecoration.underline,
+                            color: Colors.black,
                           ),
                         ),
                       ),

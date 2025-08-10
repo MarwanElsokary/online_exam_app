@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_one_c3_team/core/utils/app_color.dart';
-import 'package:project_one_c3_team/core/utils/app_text.dart';
-import 'package:project_one_c3_team/core/utils/font_manager.dart';
-import 'package:project_one_c3_team/core/utils/values_manager.dart';
-
+import '../../../../../../Core/utils/app_color.dart';
+import '../../../../../../Core/utils/app_text.dart';
+import '../../../../../../Core/utils/font_manager.dart';
+import '../../../../../../Core/utils/values_manager.dart';
 import '../forget_password/view_model/forget_password_cubit.dart';
 
 class ForgetPasswordBody extends StatefulWidget {

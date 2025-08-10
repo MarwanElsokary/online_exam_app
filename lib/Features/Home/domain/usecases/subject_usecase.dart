@@ -8,15 +8,7 @@ class SubjectUseCase {
 
   SubjectUseCase(this.repository);
 
-  Future<List<Subjects>> invoke(// String?id,
-      // String? title,
-      // Icon?icon
-
-      ) {
-    return repository.getAllSubjects(
-        // id: id,
-        // title: title,
-        // icon: icon,
-        );
+  Future<List<Subjects>> invoke() {
+    return repository.getAllSubjects();
   }
 }

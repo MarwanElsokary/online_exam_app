@@ -4,6 +4,8 @@ import 'package:online_exam/Core/Remote/Api/APIClient.dart';
 import 'package:online_exam/Features/Auth/Sign_up/data/data_sources/SignUpDataSource.dart';
 import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 
+import '../../../../../Core/Locale/PrefsHelper.dart';
+
 @Injectable(as: Signupdatasource)
 class SignUpDataSourceImpl extends Signupdatasource {
   APIClient apiClient;
@@ -29,12 +31,15 @@ class SignUpDataSourceImpl extends Signupdatasource {
           phone: phone,
           pass: pass,
           repass: repass);
-      if (result.message != null) {
-        return Right(result.message!);
+      if (result.token != null) {
+        await PrefsHelper.SaveToken(result.token!);
+        print("Token saved: ${result.token}");
       } else {
-        return left(result);
+        print("No token received from signup");
       }
+      return Left(result);
     } catch (e) {
+      print("Error during signup: $e");
       return Right(e.toString());
     }
   }

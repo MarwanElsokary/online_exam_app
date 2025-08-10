@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_one_c3_team/core/utils/app_color.dart';
-import 'package:project_one_c3_team/core/utils/app_text.dart';
-import 'package:project_one_c3_team/core/utils/font_manager.dart';
-import 'package:project_one_c3_team/core/utils/values_manager.dart';
+import '../../../../../../Core/utils/app_color.dart';
+import '../../../../../../Core/utils/app_text.dart';
+import '../../../../../../Core/utils/font_manager.dart';
+import '../../../../../../Core/utils/values_manager.dart';
+import '../../../../Login/presentation/pages/Login.dart';
 import '../../../../login_Screen/login_screen.dart';
 import '../reset_password/view_model/reset_password_cubit.dart';
 
@@ -115,7 +116,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
               ElevatedButton(
                 onPressed: isPasswordValid && isConfirmPasswordMatched
                     ? () {
-                        MaterialPageRoute(builder: (_) => LoginScreen());
+                        MaterialPageRoute(builder: (_) => Login());
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
@@ -142,7 +143,7 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
             );
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (_) => LoginScreen()),
+              MaterialPageRoute(builder: (_) => Login()),
             );
           } else if (state is ResetPasswordErrorState) {
             ScaffoldMessenger.of(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/Core/Resources/ColorsManager.dart';
-import 'package:online_exam/Core/RoutesManager/routes.dart';
+
+import '../Routs/App_Routs_names.dart';
 
 class SubSubjectWidget extends StatelessWidget{
   String? subSubjectName;
@@ -19,7 +20,7 @@ class SubSubjectWidget extends StatelessWidget{
     return InkWell(
       onTap: () {
         // Navigate to the exam details page or perform any action
-        Navigator.pushNamed(context,Routes.examdetailsRoute
+        Navigator.pushNamed(context,App_Routs_names.examdetailsRoute
 
 
 

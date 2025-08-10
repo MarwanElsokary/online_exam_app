@@ -1,15 +1,16 @@
 import 'package:injectable/injectable.dart';
-import 'package:project_one_c3_team/api/network/api_service.dart';
+import 'package:online_exam/Core/Remote/Api/APIClient.dart';
 
-import '../../../core/utils/app_text.dart';
-import '../../../core/utils/connection_manager.dart';
-import '../../../features/Auth/forget_password/data/data_sources/forgot_password_remote_data_source.dart';
-import '../../request/forget_password_request/forget_password_email_request.dart';
+import '../../../../Features/Auth/forget_password/data/data_sources/forgot_password_remote_data_source.dart';
+import '../../../utils/app_text.dart';
+import '../../../utils/connection_manager.dart';
+import '../../requests/forget_password_request/forget_password_email_request.dart';
 
 @Injectable(as: ForgetPasswordEmailRemoteDataSource)
 class ForgetPasswordEmailRemoteDataSourceImpl
     implements ForgetPasswordEmailRemoteDataSource {
-  final ApiService apiService;
+  final APIClient apiService;
+
   @factoryMethod
   const ForgetPasswordEmailRemoteDataSourceImpl({required this.apiService});
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_one_c3_team/core/DI/di.dart';
+import '../../../../../../../Core/DI/DI.dart';
 import '../../../../domain/usecases/send_email_verification_use_case.dart';
 import '../../widget/forget_password_appbar.dart';
 import '../../widget/forget_password_body.dart';

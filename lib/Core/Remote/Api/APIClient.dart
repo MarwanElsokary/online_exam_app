@@ -5,6 +5,12 @@ import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dar
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import '../../../Features/Auth/Login/data/models/LogInResponse.dart';
+import '../requests/email_verification_request/email_verification_request.dart';
+import '../requests/forget_password_request/forget_password_email_request.dart';
+import '../requests/reset_password_request/reset_password_request.dart';
+import '../response/email_verification_response/email_verification_response.dart';
+import '../response/forget_password_response/forget_password_response.dart';
+import '../response/reset_password_response/reset_password_response.dart';
 import '../response/responses/exam_response.dart';
 import '../response/responses/questions_response.dart';
 
@@ -55,5 +61,20 @@ abstract class APIClient {
   Future<QuestionsResponse> checkQuestions({
     @Body() required SubmitExamRequest request,
     @Header("token") required String? token,
+  });
+
+  @POST('/auth/forgotPassword')
+  Future<ForgetPasswordResponse> sendEmailVerification({
+    @Body() required ForgetPasswordEmailRequest request,
+  });
+
+  @POST("/v1/auth/verifyResetCode")
+  Future<EmailVerificationResponse> verifyResetCode({
+    @Body() required EmailVerificationRequest request,
+  });
+
+  @PUT("/v1/auth/resetPassword")
+  Future<ResetPasswordResponse> resetPassword({
+    @Body() required ResetPasswordRequest request,
   });
 }

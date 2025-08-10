@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam/Core/RoutesManager/routes.dart';
+
+import '../Routs/App_Routs_names.dart';
 
 class Subjectwidget extends StatelessWidget{
-  Icon icon;
+  String icon;
   String subjectname;
   String id;
   Subjectwidget({super.key, required this.icon, required this.subjectname, required this.id});
@@ -13,7 +14,7 @@ class Subjectwidget extends StatelessWidget{
      child: InkWell(
        onTap: (){
           // Navigate to the sub-subjects page or perform any action
-          Navigator.pushReplacementNamed(context,Routes.SubSubjectsRoute);
+          Navigator.pushReplacementNamed(context,App_Routs_names.SubSubjectsRoute);
           //arguments: subjectname
        },
        child: Container(
@@ -37,7 +38,6 @@ class Subjectwidget extends StatelessWidget{
            padding: const EdgeInsets.all(20.0),
            child: Row(
              children: [
-               icon,
                const SizedBox(width: 10,),
                Text(
                  subjectname,

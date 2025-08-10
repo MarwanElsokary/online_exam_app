@@ -8,7 +8,10 @@ class examdetailedscreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: Icon(Icons.arrow_back_ios),),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+
+        leading: Icon(Icons.arrow_back_ios),),
       body: SingleChildScrollView(
         child: Column(
           children: [

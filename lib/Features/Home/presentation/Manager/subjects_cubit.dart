@@ -7,19 +7,14 @@ import 'package:online_exam/Features/Home/domain/repositories/subjects_repo.dart
 import 'package:online_exam/Features/Home/domain/usecases/subject_usecase.dart';
 
 part 'subjects_state.dart';
-
 @injectable
 class SubjectsCubit extends Cubit<SubjectsState> {
-  SubjectUseCase subjectUseCase;
-  @override
-  SubjectsState state = SubjectsInitial();
+  final SubjectUseCase subjectUseCase;
 
   @factoryMethod
   SubjectsCubit(this.subjectUseCase) : super(SubjectsInitial());
 
   static SubjectsCubit get(context) => BlocProvider.of(context);
-
-  SubjectsRepository get subjectsRepository => subjectUseCase.repository;
 
   List<Subjects> subjects = [];
 
@@ -27,13 +22,13 @@ class SubjectsCubit extends Cubit<SubjectsState> {
     emit(SubjectsLoadingState());
     try {
       subjects = await subjectUseCase.invoke();
-      emit(SubjectsSuccesState(subjects as Subject));
+      emit(SubjectsSuccesState(subjects)); // صح هنا
     } catch (error) {
       emit(SubjectsErrorState(error.toString()));
     }
   }
 
   void selectSubject(Subjects subject) {
-    emit(SubjectsSuccesState(subject as Subject));
+    emit(SubjectSelectedState(subject)); // state مختلفة للـ selection
   }
 }

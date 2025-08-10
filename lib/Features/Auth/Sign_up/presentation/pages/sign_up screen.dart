@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/Core/DI/di.dart';
 import 'package:online_exam/Core/Locale/PrefsHelper.dart';
-import 'package:online_exam/Core/RoutesManager/routes.dart';
 import 'package:online_exam/Core/Widgets/CustomTextField.dart';
+import 'package:online_exam/Features/Auth/Login/presentation/pages/Login.dart';
 import 'package:online_exam/Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart';
 
+import '../../../../../Core/Routs/App_Routs_names.dart';
+
 class Signup extends StatefulWidget {
-  static const String routename = "SignUp";
+  static const String routeName = "signup";
 
   const Signup({super.key});
 
@@ -65,9 +67,14 @@ class _SignupState extends State<Signup> {
       create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
+            automaticallyImplyLeading: false,
             centerTitle: false,
-            leading:
-                IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, App_Routs_names.Login);
+                },
+                icon: Icon(Icons.arrow_back_ios)),
             title: Text(
               "Sign Up",
               style: TextStyle(
@@ -258,7 +265,7 @@ class _SignupState extends State<Signup> {
                               pass: passcontroller.text,
                               repass: confirmcontroller.text);
                           Navigator.pushReplacementNamed(
-                              context, Routes.mainRoute);
+                              context, App_Routs_names.mainRoute);
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -284,9 +291,13 @@ class _SignupState extends State<Signup> {
                           fontSize: 16,
                           fontWeight: FontWeight.w400),
                     ),
-                    InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.signInRoute);
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (_) => Login()),
+                            (route) => false, // يمسح كل الشاشات السابقة
+                          );
                         },
                         child: Text(
                           "Login",
@@ -294,7 +305,7 @@ class _SignupState extends State<Signup> {
                               color: Colors.blue,
                               fontSize: 16,
                               fontWeight: FontWeight.w400),
-                        )),
+                        ))
                   ],
                 )
               ],

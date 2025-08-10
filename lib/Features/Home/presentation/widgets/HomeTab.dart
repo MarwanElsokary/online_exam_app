@@ -6,10 +6,11 @@ import 'package:online_exam/Core/Resources/ColorsManager.dart';
 import 'package:online_exam/Core/Resources/stringsManager.dart';
 import 'package:online_exam/Core/Widgets/SearchTextField.dart';
 import 'package:online_exam/Core/Widgets/SubjectWidget.dart';
+import 'package:online_exam/Features/Home/domain/usecases/subject_usecase.dart';
 import 'package:online_exam/Features/Home/presentation/Manager/subjects_cubit.dart';
 
 class HomeTab extends StatelessWidget {
-
+  SubjectUseCase subjectUseCase = getIt<SubjectUseCase>();
   final TextEditingController? searchcontroller = TextEditingController();
   List<Subjects> subjects = [];
 
@@ -19,6 +20,7 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: false,
           title: Text(StringsManager.survey,
               style: TextStyle(
@@ -44,19 +46,18 @@ class HomeTab extends StatelessWidget {
               height: 15,
             ),
             BlocProvider(
-              create: (context) =>
-              getIt<SubjectsCubit>()
-                ..getAllSubjects(),
+              create: (context) => getIt<SubjectsCubit>()..getAllSubjects(),
               child: BlocBuilder<SubjectsCubit, SubjectsState>(
                 buildWhen: (previous, current) {
-                   if(current is SubjectsSuccesState ||
-                       current is SubjectsLoadingState||current is SubjectsErrorState)
-                    { return true;}
-                   return false;}
-
-
-                ,builder: (context, state) {
-                  if  (state is SubjectsLoadingState) {
+                  if (current is SubjectsSuccesState ||
+                      current is SubjectsLoadingState ||
+                      current is SubjectsErrorState) {
+                    return true;
+                  }
+                  return false;
+                },
+                builder: (context, state) {
+                  if (state is SubjectsLoadingState) {
                     return Center(child: CircularProgressIndicator());
                   }
                   if (state is SubjectsErrorState) {
@@ -67,17 +68,13 @@ class HomeTab extends StatelessWidget {
                   }
                   return Expanded(
                       child: ListView.builder(
-                        itemBuilder: (context, index) =>
-                            Subjectwidget(
-                              icon: Icon(
-                                  (subjects[index].icon ??
-                                      Icons.add) as IconData?),
-                              id: subjects[index].Id ?? '',
-
-
-                              subjectname: subjects[index].name ?? " ",),
-                        itemCount: subjects.length,
-                      ));
+                    itemBuilder: (context, index) => Subjectwidget(
+                      icon: subjects[index].icon ?? '',
+                      id: subjects[index].Id ?? '',
+                      subjectname: subjects[index].name ?? " ",
+                    ),
+                    itemCount: subjects.length,
+                  ));
                 },
               ),
             )
@@ -85,5 +82,3 @@ class HomeTab extends StatelessWidget {
         ));
   }
 }
-
-

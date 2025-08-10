@@ -11,8 +11,12 @@ class SubjectsRepoImpl extends SubjectsRepository {
   SubjectsRepoImpl(this._subjectDataSource);
 
   @override
-  Future<List<Subjects>> getAllSubjects() {
-    return _subjectDataSource.getAllSubjects(
-        token: PrefsHelper.getToken() ?? "");
+  Future<List<Subjects>> getAllSubjects() async {
+    final token = PrefsHelper.getToken();
+    if (token == null) {
+      throw Exception("User is not logged in");
+    }
+
+    return await _subjectDataSource.getAllSubjects(token: token);
   }
 }
