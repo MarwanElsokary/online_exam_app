@@ -1,11 +1,12 @@
+import 'package:injectable/injectable.dart';
 import 'package:online_exam/Features/Home/domain/repositories/questions_repo.dart';
 
 import '../../../../Core/Remote/response/responses/questions_response.dart';
-
+@injectable
 class QuestionsUsecase {
-  QuestionsRepo _questionsRepo;
-
-  QuestionsUsecase(this._questionsRepo);
+  QuestionsRepo questionsRepo;
+@factoryMethod
+  QuestionsUsecase(this.questionsRepo);
 
   Future<List<Questions>> invoke({
     String? examId,
@@ -18,7 +19,7 @@ class QuestionsUsecase {
     String? active,
     String? createdAt,
   }) {
-    return _questionsRepo.getQuestions(
+    return questionsRepo.getQuestions(
       examId: examId,
       token: token,
       Id: Id,

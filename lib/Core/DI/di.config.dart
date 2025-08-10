@@ -25,6 +25,7 @@ import '../../Features/Auth/Sign_up/domain/use_cases/SignUpUseCase.dart'
     as _i492;
 import '../../Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart'
     as _i3;
+import '../../Features/Exam/presentation/Manager/exam_cubit.dart' as _i625;
 import '../../Features/Home/data/data_source/exams_data_source.dart' as _i434;
 import '../../Features/Home/data/data_source/questions_data_source.dart'
     as _i397;
@@ -37,8 +38,11 @@ import '../../Features/Home/domain/repositories/exam_repo.dart' as _i404;
 import '../../Features/Home/domain/repositories/questions_repo.dart' as _i230;
 import '../../Features/Home/domain/repositories/subjects_repo.dart' as _i928;
 import '../../Features/Home/domain/usecases/exams_usecase.dart' as _i40;
+import '../../Features/Home/domain/usecases/questions_usecase.dart' as _i11;
 import '../../Features/Home/domain/usecases/subject_usecase.dart' as _i1025;
 import '../../Features/Home/presentation/Manager/subjects_cubit.dart' as _i298;
+import '../../Features/Home/presentation/Manager/subsubject_cubit.dart'
+    as _i1027;
 import '../Locale/PrefsHelper.dart' as _i338;
 import '../Remote/Api/APIClient.dart' as _i1040;
 import '../Remote/Api/network_module.dart' as _i709;
@@ -82,10 +86,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1025.SubjectUseCase(gh<_i928.SubjectsRepository>()));
     gh.factory<_i492.SignUpUseCase>(
         () => _i492.SignUpUseCase(gh<_i545.SignUpRepo>()));
+    gh.factory<_i11.QuestionsUsecase>(
+        () => _i11.QuestionsUsecase(gh<_i230.QuestionsRepo>()));
     gh.factory<_i3.SignUpCubit>(() => _i3.SignUpCubit(
           gh<_i492.SignUpUseCase>(),
           gh<_i361.Dio>(),
         ));
+    gh.factory<_i1027.SubsubjectCubit>(
+        () => _i1027.SubsubjectCubit(gh<_i40.ExamUseCase>()));
+    gh.factory<_i625.ExamCubit>(
+        () => _i625.ExamCubit(gh<_i11.QuestionsUsecase>()));
     gh.factory<_i298.SubjectsCubit>(
         () => _i298.SubjectsCubit(gh<_i1025.SubjectUseCase>()));
     return this;

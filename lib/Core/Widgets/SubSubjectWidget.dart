@@ -4,10 +4,10 @@ import 'package:online_exam/Core/Resources/stringsManager.dart';
 import 'package:online_exam/Core/RoutesManager/routes.dart';
 
 class SubSubjectWidget extends StatelessWidget{
-  String subSubjectName;
-  String subSubjectDescription;
-  String questionCount;
-  String timer;
+  String? subSubjectName;
+  String? subSubjectDescription;
+  int ?questionCount;
+  int ?timer;
   SubSubjectWidget({
     super.key,
     required this.subSubjectName,
@@ -52,7 +52,7 @@ class SubSubjectWidget extends StatelessWidget{
                         Column(
                           children: [
                             Text(
-                             subSubjectName,
+                             subSubjectName?? " ",
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -61,7 +61,7 @@ class SubSubjectWidget extends StatelessWidget{
                             ),
                             const SizedBox(height: 5,),
                             Text(
-                              questionCount,
+                              questionCount.toString(),
                               style: const TextStyle(
                                 fontSize: 13,
                                 color: ColorsManager.tretaryColor,
@@ -70,7 +70,7 @@ class SubSubjectWidget extends StatelessWidget{
                           ],
                         ),
                        Spacer(flex: 2,),
-                        Text(timer,style: TextStyle(fontSize: 13,
+                        Text(timer.toString()??" ",style: TextStyle(fontSize: 13,
                         fontWeight: FontWeight.w400,
                           color: ColorsManager.secondaryColor
                         ),)
@@ -79,7 +79,7 @@ class SubSubjectWidget extends StatelessWidget{
 
                      const SizedBox(height: 10,),
                     Text(
-                      subSubjectDescription,
+                      subSubjectDescription??" ",
                       style: const TextStyle(
                         fontSize: 13,
                         color: ColorsManager.tretaryColor,
