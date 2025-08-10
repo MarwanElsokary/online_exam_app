@@ -52,10 +52,10 @@ import '../Remote/dataSource/subject_data_source_impl.dart' as _i1064;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+  Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
-  }) {
+  }) async {
     final gh = _i526.GetItHelper(
       this,
       environment,
@@ -63,7 +63,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final networkModule = _$NetworkModule();
     gh.factory<_i338.PrefsHelper>(() => _i338.PrefsHelper());
-    gh.lazySingleton<_i361.Dio>(() => networkModule.dioProvider());
+    await gh.factoryAsync<_i361.Dio>(
+      () => networkModule.dioProvider(),
+      preResolve: true,
+    );
     gh.factory<_i1040.APIClient>(() => _i1040.APIClient(gh<_i361.Dio>()));
     gh.factory<_i641.Signupdatasource>(
         () => _i489.SignUpDataSourceImpl(gh<_i1040.APIClient>()));

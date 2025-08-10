@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 import 'package:online_exam/Features/Auth/Sign_up/domain/entities/SignUpEntity.dart';
 import 'package:online_exam/Features/Auth/Sign_up/domain/use_cases/SignUpUseCase.dart';
-import 'package:retrofit/dio.dart';
 import 'package:dio/dio.dart';
 
 part 'sign_up_state.dart';

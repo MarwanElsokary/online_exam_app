@@ -6,6 +6,8 @@ class Login extends StatelessWidget{
   static const String routeName="Login";
   late TextEditingController emailcontroller = TextEditingController();
   late TextEditingController passcontroller = TextEditingController();
+
+  Login({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -19,7 +21,7 @@ class Login extends StatelessWidget{
           )),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             width:double.infinity ,
             child: CustomTextField(
                 hintText: "Email",
@@ -41,7 +43,7 @@ class Login extends StatelessWidget{
                 }
             ),
           ),
-          Container(
+          SizedBox(
             width:double.infinity ,
             child: CustomTextField(
                 hintText: "Password",
@@ -73,13 +75,13 @@ class Login extends StatelessWidget{
             // Navigator.push(context,MaterialPageRoute(builder: (context) =>));
 
           },
-            child: Text("Login",style: TextStyle(color: Colors.white)),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,
               textStyle: TextStyle(color: Colors.white),
               padding: EdgeInsets.all(20.0),
               fixedSize: Size(300, 60),
-            ),),
+            ),
+            child: Text("Login",style: TextStyle(color: Colors.white)),),
           SizedBox(height: 20,),
           Center(
             child: Row(

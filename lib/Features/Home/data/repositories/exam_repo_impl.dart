@@ -1,13 +1,14 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/Features/Home/data/data_source/exams_data_source.dart';
+import '../../../../Core/Locale/PrefsHelper.dart';
 import '../../../../Core/Remote/response/responses/exam_response.dart';
 import '../../domain/repositories/exam_repo.dart';
 
 @Injectable(as: ExamRepo)
 class ExamRepoImpl implements ExamRepo {
-  ExamsDataSource _ExamRepo;
+  final ExamsDataSource _examRepo;
 
-  ExamRepoImpl(this._ExamRepo);
+  ExamRepoImpl(this._examRepo);
 
   @override
   Future<List<Exam>> getExams({
@@ -19,6 +20,6 @@ class ExamRepoImpl implements ExamRepo {
     bool? active,
     String? createdAt,
   }) {
-    return _ExamRepo.getExams();
+    return _examRepo.getExams(id: id ?? '', token: PrefsHelper.getToken() ?? '');
   }
 }

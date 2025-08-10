@@ -6,13 +6,14 @@ import 'package:online_exam/Core/Resources/ColorsManager.dart';
 import 'package:online_exam/Core/Resources/stringsManager.dart';
 import 'package:online_exam/Core/Widgets/SearchTextField.dart';
 import 'package:online_exam/Core/Widgets/SubjectWidget.dart';
-import 'package:online_exam/Features/Home/domain/usecases/subject_usecase.dart';
 import 'package:online_exam/Features/Home/presentation/Manager/subjects_cubit.dart';
 
 class HomeTab extends StatelessWidget {
 
   final TextEditingController? searchcontroller = TextEditingController();
   List<Subjects> subjects = [];
+
+  HomeTab({super.key});
 
   @override
   Widget build(BuildContext context) {

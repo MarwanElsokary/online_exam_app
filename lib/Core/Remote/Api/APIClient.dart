@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/Core/Remote/requests/submit_exam_request.dart';
 import 'package:online_exam/Core/Remote/response/responses/subject_response.dart';
 import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-
 import '../response/responses/exam_response.dart';
 import '../response/responses/questions_response.dart';
 
@@ -33,12 +33,20 @@ abstract class APIClient {
   @GET("/v1/exams")
   Future<ExamResponse> getExamsBySubjectId({
     @Header("token") required String? token,
+    // improve
     @Query("subject") required String subjectId,
   });
 
   @GET("/v1/exams/{id}")
   Future<QuestionsResponse> getExamById({
     @Path("id") required String examId,
+    @Header("token") required String? token,
+  });
+
+//
+  @POST("/v1/questions/check")
+  Future<QuestionsResponse> checkQuestions({
+    @Body() required SubmitExamRequest request,
     @Header("token") required String? token,
   });
 }

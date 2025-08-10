@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/Core/Resources/ColorsManager.dart';
-import 'package:online_exam/Core/Resources/stringsManager.dart';
 import 'package:online_exam/Core/RoutesManager/routes.dart';
 
 class SubSubjectWidget extends StatelessWidget{

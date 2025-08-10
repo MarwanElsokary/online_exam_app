@@ -28,15 +28,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-              home:ExamPage(),
-              /*
-               builder: (context, child) =>MaterialApp(
-              child,
+        builder: (context, child) => MaterialApp(
+              home: child,
               onGenerateRoute: RouteGenerator.getRoute,
               initialRoute: PrefsHelper.getToken() != null
                   ? Routes.signInRoute
                   : Routes.signUpRoute,
-            )*/
-    );
+            ));
   }
 }

@@ -3,6 +3,8 @@ import 'package:online_exam/Core/Resources/ColorsManager.dart';
 import 'package:online_exam/Core/Resources/stringsManager.dart';
 
 class examdetailedscreen extends StatelessWidget{
+  const examdetailedscreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,14 +86,14 @@ class examdetailedscreen extends StatelessWidget{
 
       ElevatedButton(
         onPressed:(){},
-
-        child: Text(StringsManager.Start, style: TextStyle(color: Colors.white)),
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorsManager.secondaryColor,
           textStyle: TextStyle(color: Colors.white),
           padding: EdgeInsets.all(20.0),
           fixedSize: Size(300, 60),
         ),
+
+        child: Text(StringsManager.Start, style: TextStyle(color: Colors.white)),
       )
                           ],
                         ),

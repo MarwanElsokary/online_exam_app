@@ -5,9 +5,9 @@ import '../../../../Core/Remote/response/responses/exam_response.dart';
 
 @injectable
  class ExamUseCase {
-  ExamRepo examRepo;
+  final ExamRepo _examRepo;
 
-  ExamUseCase(this.examRepo);
+  ExamUseCase(this._examRepo);
 
   Future<List<Exam>> invoke({
     String? id,
@@ -18,7 +18,7 @@ import '../../../../Core/Remote/response/responses/exam_response.dart';
     bool? active,
     String? createdAt,
   }) {
-    return examRepo.getExams(
+    return _examRepo.getExams(
       id: id,
       title: title,
       duration: duration,
