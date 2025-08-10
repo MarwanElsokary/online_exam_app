@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:exams/Features/Auth/Login/presentation/pages/Login.dart';
+import 'package:exams/Features/Auth/Sign_up/presentation/pages/sign_up%20screen.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam/Core/RoutesManager/Routs%20Generator.dart';
 import 'package:online_exam/Core/RoutesManager/routes.dart';
@@ -28,6 +30,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home:Login(),
+    );
+  }
+}
+
+
         builder: (context, child) => MaterialApp(
               home: child,
               onGenerateRoute: RouteGenerator.getRoute,

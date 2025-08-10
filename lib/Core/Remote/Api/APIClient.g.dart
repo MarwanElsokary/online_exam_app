@@ -6,9 +6,15 @@ part of 'APIClient.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _APIClient implements APIClient {
+  _APIClient(
+    this._dio, {
+    this.baseUrl,
+    this.errorLogger,
+  }) {
   _APIClient(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://exam.elevateegy.com/api/';
   }
@@ -35,11 +41,15 @@ class _APIClient implements APIClient {
     final _data = {
       'firstName': firstname,
       'lastName': secondname,
+      'firstname': firstname,
+      'secondname': secondname,
       'username': username,
       'email': email,
       'phone': phone,
       'password': pass,
       'rePassword': repass,
+      'pass': pass,
+      'repass': repass,
     };
     final _options = _setStreamType<SignUpResponce>(
       Options(method: 'POST', headers: _headers, extra: _extra)
@@ -51,6 +61,22 @@ class _APIClient implements APIClient {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
+    final _options = _setStreamType<SignUpResponce>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/auth/signup',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late SignUpResponce _value;
     try {
@@ -63,6 +89,9 @@ class _APIClient implements APIClient {
   }
 
   @override
+  Future<LoginResponce> login({
+    required String email,
+    required String pass,
   Future<AllSubjectResponse> getAllSubjects({required String? token}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -162,6 +191,27 @@ class _APIClient implements APIClient {
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'email': email,
+      'pass': pass,
+    };
+    final _options = _setStreamType<LoginResponce>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/auth/login',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
@@ -179,8 +229,10 @@ class _APIClient implements APIClient {
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late QuestionsResponse _value;
+    late LoginResponce _value;
     try {
       _value = QuestionsResponse.fromJson(_result.data!);
+      _value = LoginResponce.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -201,6 +253,10 @@ class _APIClient implements APIClient {
     return requestOptions;
   }
 
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
   String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
