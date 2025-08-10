@@ -6,7 +6,8 @@ class SignUpEntity {
   SignUpEntity({
       this.message, 
       this.token, 
-      this.user,});
+      this.user,
+  });
 
   String? message;
   String? token;

@@ -1,4 +1,5 @@
-import 'package:exams/Features/Auth/Login/data/models/LogInResponse.dart';
+
+
 import 'package:exams/Features/Auth/Login/domain/repositories/LoginRepo.dart';
 
 import 'package:injectable/injectable.dart';
@@ -11,7 +12,6 @@ class LoginUseCase {
   LoginUseCase(this.loginrepo);
 
   call({
-
     required String email,
     required String pass,
   }) =>

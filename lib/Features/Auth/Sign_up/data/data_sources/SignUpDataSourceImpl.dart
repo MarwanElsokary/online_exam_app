@@ -4,21 +4,24 @@ import 'package:exams/Features/Auth/Sign_up/data/data_sources/SignUpDataSource.d
 import 'package:exams/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as:Signupdatasource)
-class SignUpDataSourceImpl extends Signupdatasource{
+@Injectable(as: Signupdatasource)
+class SignUpDataSourceImpl extends Signupdatasource {
   APIClient apiClient;
+
   @factoryMethod
   SignUpDataSourceImpl(this.apiClient);
+
   @override
-  Future<Either<SignUpResponce, String>> registeruser({
-    required String firstname,
-    required String secondname,
-    required String username,
-    required String email,
-    required String phone,
-    required String pass,
-    required String repass})async { try{
-      var result=await apiClient.signup(
+  Future<Either<SignUpResponce, String>> registeruser(
+      {required String firstname,
+      required String secondname,
+      required String username,
+      required String email,
+      required String phone,
+      required String pass,
+      required String repass}) async {
+    try {
+      var result = await apiClient.signup(
           firstname: firstname,
           secondname: secondname,
           username: username,
@@ -26,15 +29,13 @@ class SignUpDataSourceImpl extends Signupdatasource{
           phone: phone,
           pass: pass,
           repass: repass);
- if (result.message!=null){
-   return Right(result.message!);
- }
- else{
-   return left(result);}
-
-    }catch(e)
-  {return Right(e.toString());}
-
+      if (result.message != null) {
+        return Right(result.message!);
+      } else {
+        return left(result);
+      }
+    } catch (e) {
+      return Right(e.toString());
+    }
   }
-  
 }

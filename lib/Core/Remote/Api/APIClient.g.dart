@@ -14,7 +14,7 @@ class _APIClient implements APIClient {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://exam.elevateegy.com/api/';
+    baseUrl ??= 'https://exam.elevateegy.com/api';
   }
 
   final Dio _dio;
@@ -82,9 +82,58 @@ class _APIClient implements APIClient {
     final _headers = <String, dynamic>{};
     final _data = {
       'email': email,
-      'pass': pass,
+      'password': pass,
     };
     final _options = _setStreamType<LoginResponce>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/auth/signin',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late LoginResponce _value;
+    try {
+      _value = LoginResponce.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProfileResponse> profiledata({
+    required String token,
+    String? firstname,
+    String? secondname,
+    String? username,
+    String? email,
+    String? phone,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {
+      'firstname': firstname,
+      'secondname': secondname,
+      'username': username,
+      'email': email,
+      'phone': phone,
+    };
+    _data.removeWhere((k, v) => v == null);
+    final _options = _setStreamType<ProfileResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -101,9 +150,9 @@ class _APIClient implements APIClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late LoginResponce _value;
+    late ProfileResponse _value;
     try {
-      _value = LoginResponce.fromJson(_result.data!);
+      _value = ProfileResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

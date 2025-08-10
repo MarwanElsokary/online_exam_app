@@ -1,5 +1,6 @@
 
-import 'package:exams/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
+
+import 'package:exams/Features/Auth/Login/data/models/LogInResponse.dart';
 
 class LogInEntity {
   LogInEntity({

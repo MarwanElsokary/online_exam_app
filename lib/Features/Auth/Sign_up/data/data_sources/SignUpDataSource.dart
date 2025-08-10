@@ -2,7 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:exams/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 
 abstract class Signupdatasource {
-  Future<Either<SignUpResponce,String>>registeruser({required String firstname,
+  Future<Either<SignUpResponce,String>>registeruser({
+    required String firstname,
     required String secondname,
     required String username,
     required String email,

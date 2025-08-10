@@ -13,4 +13,6 @@ Dio provideDio() => Dio();
   asExtension: true, // default
 
 )
+@injectableInit
 void configureDependencies() => getIt.init();
+

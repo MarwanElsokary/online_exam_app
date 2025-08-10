@@ -31,8 +31,8 @@ var result= await signupdatasource.registeruser(
     phone: phone,
     pass: pass,
     repass: repass);
-return result.fold((responce){
- return left(responce.tosignupentity());
+return result.fold((response){
+ return left(response.tosignupentity());
 }, (error){return Right(error);});
    }
    else{

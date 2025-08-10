@@ -14,23 +14,26 @@ class LoginRepoImpl implements LoginRepo {
   LoginRepoImpl(this.logindatasource);
 
   @override
-  Future<Either<LogInEntity, String>> loginuser({
+  Future<Either<String,LogInEntity>> loginuser({
     required String email,
     required String pass,
   }) async {
-    bool isconnected = await InternetChecker.CheckNetwork();
-    if (isconnected) {
+    // bool isconnected = await InternetChecker.CheckNetwork();
+    if (true) {
       var result = await logindatasource.login_user(
         email: email,
         pass: pass,
       );
-      return result.fold((responce) {
-        return left(responce.toLoginentity());
-      }, (error) {
-        return Right(error);
+
+      return result.fold((error) {
+        return  left(error);
+      }, (response) {
+        return Right(response.toLoginentity());
+
       });
-    } else {
-      return Right("No Internet Connection");
     }
+    // else {
+    //   return Right("No Internet Connection");
+    // }
   }
 }

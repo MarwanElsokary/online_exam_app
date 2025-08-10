@@ -1,4 +1,3 @@
-
 import 'package:exams/Core/DI/DI.dart';
 import 'package:exams/Core/Locale/PrefsHelper.dart';
 import 'package:exams/Core/RoutesManager/routes.dart';
@@ -6,7 +5,6 @@ import 'package:exams/Features/Auth/Sign_up/presentation/Widgets/CustomTextField
 import 'package:exams/Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class Signup extends StatefulWidget {
   static const String routename = "SignUp";
@@ -31,6 +29,7 @@ class _SignupState extends State<Signup> {
   late TextEditingController phonecontroller;
 
   late final SignUpCubit viewModel;
+
   void initState() {
     super.initState();
     usercontroller = TextEditingController();
@@ -55,10 +54,9 @@ class _SignupState extends State<Signup> {
     confirmcontroller.dispose();
   }
 
-
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => viewModel,
@@ -66,7 +64,7 @@ class _SignupState extends State<Signup> {
         appBar: AppBar(
             centerTitle: false,
             leading:
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
             title: Text(
               "Sign Up",
               style: TextStyle(
@@ -163,7 +161,7 @@ class _SignupState extends State<Signup> {
                         controller: passcontroller,
                         validator: (String? val) {
                           RegExp passwordRegex =
-                          RegExp(r'^(?=.*[a-zA-Z])(?=.*[0-9])');
+                              RegExp(r'^(?=.*[a-zA-Z])(?=.*[0-9])');
                           if (val == null) {
                             return 'this field is required';
                           } else if (val.isEmpty) {
@@ -219,26 +217,26 @@ class _SignupState extends State<Signup> {
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            content: Center(
-                              child: CircularProgressIndicator(
-                                  color: Colors.black),
-                            ),
-                          ));
+                                content: Center(
+                                  child: CircularProgressIndicator(
+                                      color: Colors.black),
+                                ),
+                              ));
                     } else if (state is SignUpErrorState) {
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            content: Center(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(state.message),
-                                ],
-                              ),
-                            ),
-                          ));
+                                content: Center(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(state.message),
+                                    ],
+                                  ),
+                                ),
+                              ));
                     } else if (state is SignUpSuccessState) {
-                      PrefsHelper.SaveToken(state.signupentity.token!);
+                      PrefsHelper.saveToken(state.signupentity.token!);
                       Navigator.pushReplacementNamed(context, Routes.homeRoute);
                     }
                   },
@@ -246,9 +244,8 @@ class _SignupState extends State<Signup> {
                     var cubit = BlocProvider.of<SignUpCubit>(context);
                     return ElevatedButton(
                       onPressed: () {
-                        print("Button Pressed");
                         if (formkey.currentState!.validate()) {
-                          print("Form is valid");
+
                           cubit.registeruser(
                               firstname: firstcontroller.text,
                               secondname: secondcontroller.text,
@@ -258,9 +255,10 @@ class _SignupState extends State<Signup> {
                               pass: passcontroller.text,
                               repass: confirmcontroller.text);
                         }
-                        print("First Name: ${firstcontroller.text}");
+
                       },
-                      child: Text("SignUp", style: TextStyle(color: Colors.white)),
+                      child:
+                          Text("SignUp", style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         textStyle: TextStyle(color: Colors.white),
