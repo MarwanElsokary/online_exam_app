@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam/Features/Auth/Login/presentation/pages/Login.dart';
+import 'package:online_exam/Features/Auth/Sign_up/presentation/pages/sign_up%20screen.dart';
+import 'package:online_exam/Features/Home/home.dart';
+import 'package:online_exam/Features/Home/presentation/pages/Home_Page.dart';
 import 'Core/DI/DI.dart';
 import 'Core/Locale/PrefsHelper.dart';
 import 'Core/Resources/bloc observer.dart';
@@ -20,7 +23,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Login(),
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }

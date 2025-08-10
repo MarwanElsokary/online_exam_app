@@ -1,4 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +19,7 @@ class SubsubjectCubit extends Cubit<SubsubjectState> {
 
   static SubsubjectCubit get(context) => BlocProvider.of(context);
 
-  ExamRepo get examRepository => examUseCase.call.call();
+  ExamRepo get examRepository => examUseCase.examRepo;
   // solve this issue by using the call method on examUseCase
   List<Exams> exams = [];
 

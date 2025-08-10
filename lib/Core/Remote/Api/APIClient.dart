@@ -38,7 +38,7 @@ abstract class APIClient {
     @Query("subject") required String subjectId,
   });
 
-  @POST('/v1/auth/login')
+  @POST("/v1/auth/login")
   Future<LoginResponce> login({
     @Field() required String email,
     @Field() required String pass,

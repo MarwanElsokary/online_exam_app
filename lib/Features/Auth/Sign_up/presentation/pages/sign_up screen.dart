@@ -242,7 +242,6 @@ class _SignupState extends State<Signup> {
                       Navigator.pop(context);
                     } else if (state is SignUpSuccessState) {
                       PrefsHelper.SaveToken(state.signupentity.token!);
-
                     }
                   },
                   builder: (context, state) {
@@ -258,7 +257,8 @@ class _SignupState extends State<Signup> {
                               phone: phonecontroller.text,
                               pass: passcontroller.text,
                               repass: confirmcontroller.text);
-                          Navigator.pushReplacementNamed(context, Routes.mainRoute);
+                          Navigator.pushReplacementNamed(
+                              context, Routes.mainRoute);
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -286,8 +286,7 @@ class _SignupState extends State<Signup> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.pushReplacementNamed(
-                              context, Routes.signInRoute);
+                          Navigator.pushNamed(context, Routes.signInRoute);
                         },
                         child: Text(
                           "Login",
