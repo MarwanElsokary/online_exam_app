@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:exams/Core/Remote/Api/APIClient.dart';
-import 'package:exams/Features/Auth/Login/data/data_sources/LoginDataSource.dart';
-import 'package:exams/Features/Auth/Login/data/models/LogInResponse.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../../Core/Remote/Api/APIClient.dart';
+import '../models/LogInResponse.dart';
+import 'LoginDataSource.dart';
 
 @Injectable(as: Logindatasource)
 class LoginDataSourceImpl implements Logindatasource {

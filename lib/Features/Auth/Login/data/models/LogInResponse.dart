@@ -1,6 +1,7 @@
-import 'package:exams/Features/Auth/Login/domain/entities/LogInEntity.dart';
-import 'package:exams/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../Sign_up/data/models/SignUpResponce.dart';
+import '../../domain/entities/LogInEntity.dart';
 
 part 'LogInResponse.g.dart';
 

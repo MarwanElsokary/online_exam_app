@@ -9,19 +9,19 @@ import 'package:online_exam/Features/Home/presentation/widgets/subsubjectspage.d
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
-
       case Routes.mainRoute:
-        return MaterialPageRoute(builder: (_) =>HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
 
       case Routes.signInRoute:
-        return MaterialPageRoute(builder: (_) =>  Login());
+        return MaterialPageRoute(builder: (_) => Login());
 
-        case Routes.SubSubjectsRoute:
+      case Routes.SubSubjectsRoute:
         return MaterialPageRoute(builder: (_) => SubSubjectscreen());
 
-        case Routes.examdetailsRoute:
+      case Routes.examdetailsRoute:
         return MaterialPageRoute(builder: (_) => examdetailedscreen());
-
+      // case Routes.profileRoute:
+      //   return MaterialPageRoute(builder: (_) => Profile());
 
       case Routes.signUpRoute:
         return MaterialPageRoute(builder: (_) => Signup());

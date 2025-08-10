@@ -2,10 +2,9 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam/Core/Remote/requests/submit_exam_request.dart';
 import 'package:online_exam/Core/Remote/response/responses/subject_response.dart';
 import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
-import 'package:exams/Features/Auth/Login/data/models/LogInResponse.dart';
-import 'package:exams/Features/Auth/Sign_up/data/models/SignUpResponce.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
+import '../../../Features/Auth/Login/data/models/LogInResponse.dart';
 import '../response/responses/exam_response.dart';
 import '../response/responses/questions_response.dart';
 
@@ -18,15 +17,7 @@ abstract class APIClient {
   @factoryMethod
   factory APIClient(Dio dio) = _APIClient;
 
-@RestApi(baseUrl:'https://exam.elevateegy.com/api/')
-abstract class APIClient{
-  factory APIClient(Dio dio, {String? baseUrl}) = _APIClient;
   @POST('/v1/auth/signup')
-  Future<SignUpResponce>signup(
-  { @Field()required String firstname,@Field()required String secondname,
-   @Field()required String username,@Field()required String email,
-   @Field()required String phone,@Field()required String pass,
-   @Field()required String repass
   Future<SignUpResponce> signup(
       {@Field("firstName") required String firstname,
       @Field("lastName") required String secondname,
@@ -46,12 +37,12 @@ abstract class APIClient{
     // improve
     @Query("subject") required String subjectId,
   });
+
   @POST('/v1/auth/login')
-  Future<LoginResponce>login(
-      {
-        @Field()required String email
-        ,@Field()required String pass,
-      });
+  Future<LoginResponce> login({
+    @Field() required String email,
+    @Field() required String pass,
+  });
 
   @GET("/v1/exams/{id}")
   Future<QuestionsResponse> getExamById({

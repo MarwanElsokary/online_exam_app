@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:exams/Core/Resources/InternetChecker.dart';
-import 'package:exams/Features/Auth/Login/data/data_sources/LoginDataSource.dart';
-import 'package:exams/Features/Auth/Login/domain/entities/LogInEntity.dart';
-import 'package:exams/Features/Auth/Login/domain/repositories/LoginRepo.dart';
-
 import 'package:injectable/injectable.dart';
+import '../../../../../Core/Resources/InternetChecker.dart';
+import '../../data/data_sources/LoginDataSource.dart';
+import '../entities/LogInEntity.dart';
+import 'LoginRepo.dart';
 
 @Injectable(as: LoginRepo)
 class LoginRepoImpl implements LoginRepo {

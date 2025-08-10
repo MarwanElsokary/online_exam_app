@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:exams/Features/Auth/Login/data/models/LogInResponse.dart';
-import 'package:exams/Features/Auth/Login/domain/entities/LogInEntity.dart';
-import 'package:exams/Features/Auth/Login/presentation/pages/Login.dart';
-
-import 'package:exams/Features/Auth/Login/domain/use_cases/LoginUseCase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
+
+import '../../domain/entities/LogInEntity.dart';
+import '../../domain/use_cases/LoginUseCase.dart';
 part 'login_state.dart';
 
 @injectable
