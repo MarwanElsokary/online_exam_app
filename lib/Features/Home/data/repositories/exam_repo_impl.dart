@@ -13,13 +13,11 @@ class ExamRepoImpl implements ExamRepo {
   @override
   Future<List<Exam>> getExams({
     String? id,
-    String? title,
-    int? duration,
-    String? subject,
-    int? numberOfQuestions,
-    bool? active,
-    String? createdAt,
   }) {
-    return _examRepo.getExams(id: id ?? '', token: PrefsHelper.getToken() ?? '');
+    final token = PrefsHelper.getToken();
+    if (token == null) {
+      throw Exception("User is not logged in");
+    }
+    return _examRepo.getExams(id: id ?? '', token: token);
   }
 }

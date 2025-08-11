@@ -8,21 +8,29 @@ import '../data_source/check_questions_data_source.dart';
 
 class CheckQuestionsRepoImpl implements CheckQuestionsRepo {
   final CheckQuestionsDataSource remoteDataSource;
-  final String? _token = PrefsHelper.getToken();
 
   CheckQuestionsRepoImpl({required this.remoteDataSource});
 
   @override
   Future<List<CorrectQuestions>> correctQuestions(
-      {required SubmitExamRequest request, required String token}) async {
+      {required SubmitExamRequest request}) async {
+    final token = PrefsHelper.getToken();
+    if (token == null) {
+      throw Exception("User is not logged in");
+    }
     return await remoteDataSource.correctQuestions(
-        request: request, token: _token ?? token);
+        request: request, token: token);
   }
 
   @override
-  Future<List<WrongQuestions>> wrongQuestions(
-      {required SubmitExamRequest request, required String token}) async {
+  Future<List<WrongQuestions>> wrongQuestions({
+    required SubmitExamRequest request,
+  }) async {
+    final token = PrefsHelper.getToken();
+    if (token == null) {
+      throw Exception("User is not logged in");
+    }
     return await remoteDataSource.wrongQuestions(
-        request: request, token: _token ?? token);
+        request: request, token: token);
   }
 }

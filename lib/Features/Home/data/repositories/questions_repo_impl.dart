@@ -15,9 +15,13 @@ class QuestionsRepoImpl implements QuestionsRepo {
   Future<List<Questions>> getQuestions({
     required String examId,
   }) async {
+    final token = PrefsHelper.getToken();
+    if (token == null) {
+      throw Exception("User is not logged in");
+    }
     return await _questionsDataSource.getQuestions(
+      token: token,
       examId: examId,
-      token: PrefsHelper.getToken() ?? "",
     );
   }
 }

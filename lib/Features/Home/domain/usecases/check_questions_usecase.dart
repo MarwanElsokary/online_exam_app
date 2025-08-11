@@ -10,21 +10,17 @@ class CheckQuestionsUseCase {
 
   Future<List<CorrectQuestions>> correctQuestions({
     required SubmitExamRequest request,
-    required String token,
   }) async {
     return await questions.correctQuestions(
       request: request,
-      token: token,
     );
   }
 
   Future<List<WrongQuestions>> wrongQuestions({
     required SubmitExamRequest request,
-    required String token,
   }) async {
     return await questions.wrongQuestions(
       request: request,
-      token: token,
     );
   }
 }
