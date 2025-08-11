@@ -1,17 +1,19 @@
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../domain/usecases/send_email_verification_use_case.dart';
 
 part 'forget_password_state.dart';
 
+@injectable
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   static ForgetPasswordCubit get(context) => BlocProvider.of(context);
 
-  late final SendEmailVerificationUseCase sendEmailVerificationUseCase;
+  final SendEmailVerificationUseCase sendEmailVerificationUseCase;
 
   ForgetPasswordCubit({required this.sendEmailVerificationUseCase})
-    : super(ForgetPasswordInitial());
+      : super(ForgetPasswordInitial());
 
   Future<void> sendEmailVerification(String email) async {
     emit(ForgetPasswordLoadingState());

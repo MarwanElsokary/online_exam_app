@@ -4,6 +4,7 @@ import '../repositories/forgot_password_repository.dart';
 @injectable
 class SendEmailVerificationUseCase {
   final ForgetPasswordEmailRepository _forgetPasswordEmailRepository;
+
   @factoryMethod
   const SendEmailVerificationUseCase(this._forgetPasswordEmailRepository);
 

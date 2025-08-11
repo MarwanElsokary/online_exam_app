@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../Core/DI/DI.dart';
 import '../../../../../../Core/utils/app_color.dart';
 import '../../../../../../Core/utils/app_text.dart';
 import '../../../../../../Core/utils/font_manager.dart';
@@ -54,112 +55,114 @@ class _ResetPasswordBodyState extends State<ResetPasswordBody> {
         horizontal: AppSize.s16,
         vertical: AppSize.s24,
       ),
-      child: BlocConsumer(
-        builder: (context, state) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  AppText.resetPassword,
+      child: BlocProvider(
+        create: (context) => ResetPasswordCubit(resetPasswordUseCase: getIt()),
+        child: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
+          builder: (context, state) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    AppText.resetPassword,
+                    style: TextStyle(
+                      fontWeight: FontWeightManager.medium,
+                      fontSize: AppSize.s18,
+                    ),
+                  ),
+                ),
+                SizedBox(height: AppSize.s20),
+                Text(
+                  AppText.resetPasswordMessage,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeightManager.medium,
+                    color: AppColors.gray,
+                    fontWeight: FontWeightManager.regular,
                     fontSize: AppSize.s18,
                   ),
                 ),
-              ),
-              SizedBox(height: AppSize.s20),
-              Text(
-                AppText.resetPasswordMessage,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.gray,
-                  fontWeight: FontWeightManager.regular,
-                  fontSize: AppSize.s18,
-                ),
-              ),
-              SizedBox(height: AppSize.s20),
+                SizedBox(height: AppSize.s20),
 
-              // New password field
-              TextField(
-                controller: newPasswordController,
-                decoration: InputDecoration(
-                  labelText: AppText.newPassword,
-                  hintText: AppText.enterYourPassword,
-                  border: OutlineInputBorder(),
-                  errorText:
-                      newPasswordController.text.isNotEmpty && !isPasswordValid
-                      ? AppText.hintCorrectPassword
-                      : null,
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: AppSize.s20),
-
-              // Confirm password field
-              TextField(
-                controller: confirmPasswordController,
-                decoration: InputDecoration(
-                  labelText: AppText.confirmPassword,
-                  hintText: AppText.confirmPassword,
-                  border: OutlineInputBorder(),
-                  errorText:
-                      confirmPasswordController.text.isNotEmpty &&
-                          !isConfirmPasswordMatched
-                      ? AppText.passwordsDoNotMatch
-                      : null,
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: AppSize.s20),
-
-              ElevatedButton(
-                onPressed: isPasswordValid && isConfirmPasswordMatched
-                    ? () {
-                        MaterialPageRoute(builder: (_) => Login());
-                      }
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isPasswordValid && isConfirmPasswordMatched
-                      ? AppColors.primary
-                      : AppColors.red,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                // New password field
+                TextField(
+                  controller: newPasswordController,
+                  decoration: InputDecoration(
+                    labelText: AppText.newPassword,
+                    hintText: AppText.enterYourPassword,
+                    border: OutlineInputBorder(),
+                    errorText: newPasswordController.text.isNotEmpty &&
+                            !isPasswordValid
+                        ? AppText.hintCorrectPassword
+                        : null,
                   ),
-                  minimumSize: Size(double.infinity, 50),
+                  obscureText: true,
                 ),
-                child: Text(
-                  AppText.continueText,
-                  style: TextStyle(color: AppColors.white),
+                SizedBox(height: AppSize.s20),
+
+                // Confirm password field
+                TextField(
+                  controller: confirmPasswordController,
+                  decoration: InputDecoration(
+                    labelText: AppText.confirmPassword,
+                    hintText: AppText.confirmPassword,
+                    border: OutlineInputBorder(),
+                    errorText: confirmPasswordController.text.isNotEmpty &&
+                            !isConfirmPasswordMatched
+                        ? AppText.passwordsDoNotMatch
+                        : null,
+                  ),
+                  obscureText: true,
                 ),
-              ),
-            ],
-          );
-        },
-        listener: (context, state) {
-          if (state is ResetPasswordSuccessState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(AppText.resetPasswordMessage)),
+                SizedBox(height: AppSize.s20),
+
+                ElevatedButton(
+                  onPressed: isPasswordValid && isConfirmPasswordMatched
+                      ? () {
+                          MaterialPageRoute(builder: (_) => Login());
+                        }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: isPasswordValid && isConfirmPasswordMatched
+                        ? AppColors.primary
+                        : AppColors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    minimumSize: Size(double.infinity, 50),
+                  ),
+                  child: Text(
+                    AppText.continueText,
+                    style: TextStyle(color: AppColors.white),
+                  ),
+                ),
+              ],
             );
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => Login()),
-            );
-          } else if (state is ResetPasswordErrorState) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
-          }
-        },
-        buildWhen: (previous, current) {
-          return current is ResetPasswordLoadingState ||
-              current is ResetPasswordInitial ||
-              current is ResetPasswordSuccessState;
-        },
-        listenWhen: (previous, current) {
-          return current is ResetPasswordSuccessState ||
-              current is ResetPasswordErrorState;
-        },
+          },
+          listener: (context, state) {
+            if (state is ResetPasswordSuccessState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(AppText.resetPasswordMessage)),
+              );
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => Login()),
+              );
+            } else if (state is ResetPasswordErrorState) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+            }
+          },
+          buildWhen: (previous, current) {
+            return current is ResetPasswordLoadingState ||
+                current is ResetPasswordInitial ||
+                current is ResetPasswordSuccessState;
+          },
+          listenWhen: (previous, current) {
+            return current is ResetPasswordSuccessState ||
+                current is ResetPasswordErrorState;
+          },
+        ),
       ),
     );
   }

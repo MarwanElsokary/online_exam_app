@@ -15,70 +15,67 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  //List<Subjects>subjects=[];
-  List<Widget> tabs = [HomeTab(), ResultsTab(), ProfileTab()];
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  final List<Widget> tabs = [
+    HomeTab(),
+    const ResultsTab(),
+    const ProfileTab(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      bottomNavigationBar: NavigationBar(
-          backgroundColor: Colors.white,
-          indicatorColor: Colors.white70,
-          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-          selectedIndex: selectedIndex,
-          onDestinationSelected: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          destinations: [
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                AssetsManager.hometab,
-                colorFilter:
-                    ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-              ),
-              label: StringsManager.homeTab,
-              selectedIcon: SvgPicture.asset(
-                AssetsManager.hometab,
-                colorFilter:
-                    ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-              ),
-            ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                AssetsManager.resultstab,
-                colorFilter:
-                    ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-              ),
-              label: StringsManager.result,
-              selectedIcon: SvgPicture.asset(
-                AssetsManager.resultstab,
-                colorFilter:
-                    ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-              ),
-            ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                AssetsManager.profiletab,
-                colorFilter:
-                    ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-              ),
-              label: StringsManager.profileTab,
-              selectedIcon: SvgPicture.asset(
-                AssetsManager.profiletab,
-                colorFilter:
-                    ColorFilter.mode(Colors.blueAccent, BlendMode.srcIn),
-              ),
-            )
-          ]),
       body: tabs[selectedIndex],
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        elevation: 2,
+        indicatorColor: Colors.transparent,
+        // no background indicator
+        height: 70,
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        selectedIndex: selectedIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        destinations: [
+          _buildNavDestination(
+            iconPath: AssetsManager.homeTab,
+            label: StringsManager.homeTab,
+            isSelected: selectedIndex == 0,
+          ),
+          _buildNavDestination(
+            iconPath: AssetsManager.resultsTab,
+            label: StringsManager.result,
+            isSelected: selectedIndex == 1,
+          ),
+          _buildNavDestination(
+            iconPath: AssetsManager.profileTab,
+            label: StringsManager.profileTab,
+            isSelected: selectedIndex == 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  NavigationDestination _buildNavDestination({
+    required String iconPath,
+    required String label,
+    required bool isSelected,
+  }) {
+    return NavigationDestination(
+      icon: SvgPicture.asset(
+        iconPath,
+        colorFilter: ColorFilter.mode(
+          isSelected ? Colors.blueAccent : Colors.grey,
+          BlendMode.srcIn,
+        ),
+        width: 26,
+        height: 26,
+      ),
+      label: label,
     );
   }
 }

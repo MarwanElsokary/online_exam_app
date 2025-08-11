@@ -19,17 +19,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   void initState() {
     super.initState();
-    viewModel = getIt<ForgetPasswordCubit>()
-      ..sendEmailVerificationUseCase = getIt<SendEmailVerificationUseCase>();
+    viewModel = getIt<ForgetPasswordCubit>();
   }
+
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ForgetPasswordCubit(
-        sendEmailVerificationUseCase: context
-            .read<SendEmailVerificationUseCase>(),
-      ),
+      create: (context) => viewModel,
+
       child: Scaffold(
         appBar: ForgetPasswordAppbar(),
         body: ForgetPasswordBody(),
