@@ -6,6 +6,8 @@ import 'package:online_exam/Features/Home/presentation/widgets/HomeTab.dart';
 import 'package:online_exam/Features/Home/presentation/widgets/ProfileTab.dart';
 import 'package:online_exam/Features/Home/presentation/widgets/ResultsTab.dart';
 
+import '../../../Auth/Profile/presentation/pages/profile_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -19,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> tabs = [
     HomeTab(),
     const ResultsTab(),
-    const ProfileTab(),
+    const Profile(),
   ];
 
   @override

@@ -1,5 +1,7 @@
 
-import '../../../Sign_up/data/models/SignUpResponce.dart';
+
+
+import '../../data/models/LogInResponse.dart';
 
 class LogInEntity {
   LogInEntity({

@@ -1,6 +1,6 @@
+
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../Sign_up/data/models/SignUpResponce.dart';
 import '../../domain/entities/LogInEntity.dart';
 
 part 'LogInResponse.g.dart';
@@ -32,42 +32,42 @@ class LoginResponce {
 
   }
 }
-//
-// @JsonSerializable()
-// class User {
-//   @JsonKey(name: "username")
-//   final String? username;
-//   @JsonKey(name: "firstName")
-//   final String? firstName;
-//   @JsonKey(name: "lastName")
-//   final String? lastName;
-//   @JsonKey(name: "email")
-//   final String? email;
-//   @JsonKey(name: "phone")
-//   final String? phone;
-//   @JsonKey(name: "isVerified")
-//   final bool? isVerified;
-//   @JsonKey(name: "_id")
-//   final String? Id;
-//
-//   User ({
-//     this.username,
-//     this.firstName,
-//     this.lastName,
-//     this.email,
-//     this.phone,
-//     this.isVerified,
-//     this.Id,
-//
-//   });
-//
-//   factory User.fromJson(Map<String, dynamic> json) {
-//     return _$UserFromJson(json);
-//   }
-//
-//   Map<String, dynamic> toJson() {
-//     return _$UserToJson(this);
-//   }
-// }
+
+@JsonSerializable()
+class User {
+  @JsonKey(name: "username")
+  final String? username;
+  @JsonKey(name: "firstName")
+  final String? firstName;
+  @JsonKey(name: "lastName")
+  final String? lastName;
+  @JsonKey(name: "email")
+  final String? email;
+  @JsonKey(name: "phone")
+  final String? phone;
+  @JsonKey(name: "isVerified")
+  final bool? isVerified;
+  @JsonKey(name: "_id")
+  final String? Id;
+
+  User ({
+    this.username,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.isVerified,
+    this.Id,
+
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return _$UserFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$UserToJson(this);
+  }
+}
 
 

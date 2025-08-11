@@ -5,6 +5,7 @@ import 'package:online_exam/Features/Auth/Sign_up/data/models/SignUpResponce.dar
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import '../../../Features/Auth/Login/data/models/LogInResponse.dart';
+import '../../../Features/Auth/Profile/data/models/ProfileResponse.dart';
 import '../requests/email_verification_request/email_verification_request.dart';
 import '../requests/forget_password_request/forget_password_email_request.dart';
 import '../requests/reset_password_request/reset_password_request.dart';
@@ -44,16 +45,25 @@ abstract class APIClient {
     @Query("subject") required String subjectId,
   });
 
-  @POST("/v1/auth/login")
+  @POST("/v1/auth/signin")
   Future<LoginResponce> login({
     @Field() required String email,
     @Field() required String pass,
   });
 
+  @POST('/v1/auth/login')
+  Future<ProfileResponse> profiledata({
+    @Header('token') required String token,
+    @Field() String? firstname,
+    @Field()  String? secondname,
+    @Field()  String? username,
+    @Field()  String? email,
+    @Field()  String? phone,
+});
   @GET("/v1/exams/{id}")
   Future<QuestionsResponse> getExamById({
     @Path("id") required String examId,
-    @Header("token") required String? token,
+    @Header("token")  String? token,
   });
 
 //

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Features/Auth/Login/presentation/pages/Login.dart';
+import '../../Features/Auth/Profile/presentation/pages/profile_screen.dart';
 import '../../Features/Auth/Sign_up/presentation/pages/sign_up screen.dart';
 import '../../Features/Home/presentation/pages/Home_Page.dart';
 import '../../Features/Home/presentation/widgets/examdetailedscreen.dart';
@@ -36,8 +37,8 @@ interface class AppRoutsPage {
 
       case App_Routs_names.examdetailsRoute:
         return MaterialPageRoute(builder: (_) => examdetailedscreen());
-      // case Routes.profileRoute:
-      //   return MaterialPageRoute(builder: (_) => Profile());
+      case App_Routs_names.profileRoute:
+        return MaterialPageRoute(builder: (_) => Profile());
 
       default:
         return MaterialPageRoute(builder: (context) => Login());

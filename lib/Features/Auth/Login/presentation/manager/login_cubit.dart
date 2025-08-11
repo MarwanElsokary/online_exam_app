@@ -20,7 +20,10 @@ class LogINCubit extends Cubit<LogINState> {
     required String email,
     required String pass,
   }) async {
+
+
     emit(LogINLoadingState());
+
 
     try {
       var result = await loginusecase.call(
@@ -28,15 +31,21 @@ class LogINCubit extends Cubit<LogINState> {
         pass: pass,
       );
 
+
+
       result.fold(
-        (error) {
+            (error) {
+
           emit(LogINErrorState(error));
+
         },
-        (logInEntity) {
+            (logInEntity) {
           emit(LogINSuccessState(logInEntity));
+
         },
       );
     } catch (e) {
+
       emit(LogINErrorState(e.toString()));
     }
   }

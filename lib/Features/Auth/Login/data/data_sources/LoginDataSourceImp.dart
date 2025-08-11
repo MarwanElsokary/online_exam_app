@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+
 import 'package:injectable/injectable.dart';
 
 import '../../../../../Core/Remote/Api/APIClient.dart';
@@ -13,7 +14,7 @@ class LoginDataSourceImpl implements Logindatasource {
   LoginDataSourceImpl(this.apiClient);
 
   @override
-  Future<Either<LoginResponce, String>> login_user({
+  Future<Either<String, LoginResponce>> login_user({
     required String email,
     required String pass,
   }) async {
@@ -22,13 +23,14 @@ class LoginDataSourceImpl implements Logindatasource {
         email: email,
         pass: pass,
       );
-      if (result.message != null) {
-        return Right(result.message!);
+      if (result.message == null) {
+        return left(result.message!);
+
       } else {
-        return left(result);
+        return Right(result);
       }
     } catch (e) {
-      return Right(e.toString());
+      return left(e.toString());
     }
   }
 }

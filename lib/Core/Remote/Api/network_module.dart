@@ -7,6 +7,7 @@ import '../../Locale/PrefsHelper.dart';
 @module
 abstract class NetworkModule {
   @preResolve
+
   Future<Dio> dioProvider() async {
     final dio = Dio(BaseOptions(
       connectTimeout: const Duration(seconds: 60),

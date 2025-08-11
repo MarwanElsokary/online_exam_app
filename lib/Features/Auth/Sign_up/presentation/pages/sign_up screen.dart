@@ -71,8 +71,7 @@ class _SignupState extends State<Signup> {
             centerTitle: false,
             leading: IconButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, App_Routs_names.Login);
+                  Navigator.pop(context);
                 },
                 icon: Icon(Icons.arrow_back_ios)),
             title: Text(

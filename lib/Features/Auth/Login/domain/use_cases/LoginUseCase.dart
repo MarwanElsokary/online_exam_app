@@ -1,3 +1,6 @@
+
+
+
 import 'package:injectable/injectable.dart';
 
 import '../repositories/LoginRepo.dart';
@@ -10,7 +13,6 @@ class LoginUseCase {
   LoginUseCase(this.loginrepo);
 
   call({
-
     required String email,
     required String pass,
   }) =>
