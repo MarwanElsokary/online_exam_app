@@ -36,28 +36,30 @@ import '../../Features/Auth/forget_password/domain/usecases/send_email_verificat
     as _i29;
 import '../../Features/Auth/forget_password/domain/usecases/verifiy_code_use_case.dart'
     as _i36;
+import '../../Features/Auth/forget_password/presentation/screens/forget_password/view_model/forget_password_cubit.dart'
+    as _i40;
 import '../../Features/Auth/Login/data/data_sources/LoginDataSource.dart'
     as _i18;
 import '../../Features/Auth/Login/data/data_sources/LoginDataSourceImp.dart'
     as _i19;
-import '../../Features/Auth/Login/domain/repositories/LoginRepo.dart' as _i40;
+import '../../Features/Auth/Login/domain/repositories/LoginRepo.dart' as _i41;
 import '../../Features/Auth/Login/domain/repositories/LoginRepoImpl.dart'
-    as _i41;
-import '../../Features/Auth/Login/domain/use_cases/LoginUseCase.dart' as _i42;
+    as _i42;
+import '../../Features/Auth/Login/domain/use_cases/LoginUseCase.dart' as _i43;
 import '../../Features/Auth/Login/presentation/manager/login_cubit.dart'
-    as _i49;
+    as _i50;
 import '../../Features/Auth/Sign_up/data/data_sources/SignUpDataSource.dart'
     as _i30;
 import '../../Features/Auth/Sign_up/data/data_sources/SignUpDataSourceImpl.dart'
     as _i31;
 import '../../Features/Auth/Sign_up/domain/repositories/SignUpRepo.dart'
-    as _i43;
-import '../../Features/Auth/Sign_up/domain/repositories/SignUpRepoImpl.dart'
     as _i44;
-import '../../Features/Auth/Sign_up/domain/use_cases/SignUpUseCase.dart'
+import '../../Features/Auth/Sign_up/domain/repositories/SignUpRepoImpl.dart'
     as _i45;
+import '../../Features/Auth/Sign_up/domain/use_cases/SignUpUseCase.dart'
+    as _i46;
 import '../../Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart'
-    as _i50;
+    as _i51;
 import '../../Features/Exam/presentation/Manager/exam_cubit.dart' as _i4;
 import '../../Features/Home/data/data_source/exams_data_source.dart' as _i12;
 import '../../Features/Home/data/data_source/questions_data_source.dart'
@@ -71,12 +73,12 @@ import '../../Features/Home/domain/repositories/questions_repo.dart' as _i22;
 import '../../Features/Home/domain/repositories/subjects_repo.dart' as _i34;
 import '../../Features/Home/domain/usecases/exams_usecase.dart' as _i39;
 import '../../Features/Home/domain/usecases/questions_usecase.dart' as _i5;
-import '../../Features/Home/domain/usecases/subject_usecase.dart' as _i46;
-import '../../Features/Home/presentation/Manager/subjects_cubit.dart' as _i47;
-import '../../Features/Home/presentation/Manager/subsubject_cubit.dart' as _i48;
+import '../../Features/Home/domain/usecases/subject_usecase.dart' as _i47;
+import '../../Features/Home/presentation/Manager/subjects_cubit.dart' as _i48;
+import '../../Features/Home/presentation/Manager/subsubject_cubit.dart' as _i49;
 import '../Locale/PrefsHelper.dart' as _i6;
 import '../Remote/Api/APIClient.dart' as _i7;
-import '../Remote/Api/network_module.dart' as _i51;
+import '../Remote/Api/network_module.dart' as _i52;
 import '../Remote/dataSource/exams_data_source_impl.dart' as _i13;
 import '../Remote/dataSource/forget_password/email_verification_data_source_impl.dart'
     as _i9;
@@ -151,30 +153,32 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i37.ExamRepo>(
         () => _i38.ExamRepoImpl(gh<_i12.ExamsDataSource>()));
     gh.factory<_i39.ExamUseCase>(() => _i39.ExamUseCase(gh<_i37.ExamRepo>()));
-    gh.factory<_i40.LoginRepo>(
-        () => _i41.LoginRepoImpl(gh<_i18.Logindatasource>()));
-    gh.factory<_i42.LoginUseCase>(
-        () => _i42.LoginUseCase(gh<_i40.LoginRepo>()));
-    gh.factory<_i43.SignUpRepo>(
-        () => _i44.SignUpRepoImpl(gh<_i30.Signupdatasource>()));
-    gh.factory<_i45.SignUpUseCase>(
-        () => _i45.SignUpUseCase(gh<_i43.SignUpRepo>()));
-    gh.factory<_i46.SubjectUseCase>(
-        () => _i46.SubjectUseCase(gh<_i34.SubjectsRepository>()));
-    gh.factory<_i47.SubjectsCubit>(
-        () => _i47.SubjectsCubit(gh<_i46.SubjectUseCase>()));
-    gh.factory<_i48.SubsubjectCubit>(
-        () => _i48.SubsubjectCubit(gh<_i39.ExamUseCase>()));
-    gh.factory<_i49.LogINCubit>(() => _i49.LogINCubit(
-          gh<_i42.LoginUseCase>(),
+    gh.factory<_i40.ForgetPasswordCubit>(() => _i40.ForgetPasswordCubit(
+        sendEmailVerificationUseCase: gh<_i29.SendEmailVerificationUseCase>()));
+    gh.factory<_i41.LoginRepo>(
+        () => _i42.LoginRepoImpl(gh<_i18.Logindatasource>()));
+    gh.factory<_i43.LoginUseCase>(
+        () => _i43.LoginUseCase(gh<_i41.LoginRepo>()));
+    gh.factory<_i44.SignUpRepo>(
+        () => _i45.SignUpRepoImpl(gh<_i30.Signupdatasource>()));
+    gh.factory<_i46.SignUpUseCase>(
+        () => _i46.SignUpUseCase(gh<_i44.SignUpRepo>()));
+    gh.factory<_i47.SubjectUseCase>(
+        () => _i47.SubjectUseCase(gh<_i34.SubjectsRepository>()));
+    gh.factory<_i48.SubjectsCubit>(
+        () => _i48.SubjectsCubit(gh<_i47.SubjectUseCase>()));
+    gh.factory<_i49.SubsubjectCubit>(
+        () => _i49.SubsubjectCubit(gh<_i39.ExamUseCase>()));
+    gh.factory<_i50.LogINCubit>(() => _i50.LogINCubit(
+          gh<_i43.LoginUseCase>(),
           gh<_i3.Dio>(),
         ));
-    gh.factory<_i50.SignUpCubit>(() => _i50.SignUpCubit(
-          gh<_i45.SignUpUseCase>(),
+    gh.factory<_i51.SignUpCubit>(() => _i51.SignUpCubit(
+          gh<_i46.SignUpUseCase>(),
           gh<_i3.Dio>(),
         ));
     return this;
   }
 }
 
-class _$NetworkModule extends _i51.NetworkModule {}
+class _$NetworkModule extends _i52.NetworkModule {}

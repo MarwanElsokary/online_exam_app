@@ -98,14 +98,19 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 5),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      "Forget Password?",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, App_Routs_names.forgetPasswordScreen);
+                        },
+                        child: Text(
+                          "Forget Password?",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )),
                   ),
                   SizedBox(height: 20),
                   InkWell(
@@ -183,7 +188,8 @@ class _LoginState extends State<Login> {
                       TextButton(
                         style: TextButton.styleFrom(),
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context,App_Routs_names.signUpScreen);
+                          Navigator.pushReplacementNamed(
+                              context, App_Routs_names.signUpScreen);
                         },
                         child: Text(
                           "Signup?",

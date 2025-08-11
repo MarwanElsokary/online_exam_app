@@ -12,6 +12,7 @@ class ForgetPasswordAppbar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: AppColors.white,
       title: Text(
         AppText.password,
