@@ -6,10 +6,10 @@ import 'package:online_exam/Core/Widgets/CustomTextField.dart';
 import 'package:online_exam/Features/Auth/Login/presentation/pages/Login.dart';
 import 'package:online_exam/Features/Auth/Sign_up/presentation/manager/sign_up_cubit.dart';
 
-import '../../../../../Core/Routs/App_Routs_names.dart';
+import '../../../../../core/Routs/App_Routs_names.dart';
 
 class Signup extends StatefulWidget {
-  static const String routeName = "signup";
+  static const String routename = "SignUp";
 
   const Signup({super.key});
 
@@ -67,7 +67,6 @@ class _SignupState extends State<Signup> {
       create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
-            automaticallyImplyLeading: false,
             centerTitle: false,
             leading: IconButton(
                 onPressed: () {
@@ -249,6 +248,7 @@ class _SignupState extends State<Signup> {
                       Navigator.pop(context);
                     } else if (state is SignUpSuccessState) {
                       PrefsHelper.SaveToken(state.signupentity.token!);
+
                     }
                   },
                   builder: (context, state) {

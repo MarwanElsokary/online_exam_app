@@ -15,7 +15,7 @@ class ExamPage extends StatefulWidget {
 }
 
 class _ExamPageState extends State<ExamPage> {
-  int timeleft=30;
+   int timeleft=30; // Set the initial time left in seconds
   void startcountdown(){
     Timer.periodic(Duration(seconds: 1),(timer){
       setState(() {
@@ -55,7 +55,7 @@ class _ExamPageState extends State<ExamPage> {
           ),
          TimerCountdown(
          format: CountDownTimerFormat.minutesSeconds,
-         endTime: DateTime.now().add(Duration(seconds: 30)),
+         endTime: DateTime.now().add(Duration(seconds: timeleft)),
          onEnd: (){
            showDialog(
                context: context,

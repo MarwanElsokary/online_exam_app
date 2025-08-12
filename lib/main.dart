@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: App_Routs_names.mainRoute,
+          initialRoute: PrefsHelper.getToken() != null
+              ? App_Routs_names.mainRoute
+              : App_Routs_names.signUpScreen,
           onGenerateRoute: AppRoutsPage.route,
         );
       },
