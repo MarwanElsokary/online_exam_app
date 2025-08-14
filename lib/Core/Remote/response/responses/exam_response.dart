@@ -6,7 +6,7 @@ part 'exam_response.g.dart';
 class ExamResponse {
   @JsonKey(name: "message")
   final String? message;
-  @JsonKey(name: "exam")
+  @JsonKey(name: "exams")
   final List<Exam>? exam;
 
   ExamResponse({

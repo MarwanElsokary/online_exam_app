@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:online_exam/Core/DI/DI.dart';
+import 'package:online_exam/Core/Remote/response/responses/exam_response.dart'as examResponse;
 import 'package:online_exam/Core/Resources/ColorsManager.dart';
 import 'package:online_exam/Features/Exam/presentation/Manager/exam_cubit.dart';
 import 'package:online_exam/Features/Exam/presentation/widgets/QuestionWidget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ExamPage extends StatefulWidget {
+  final examResponse.Exam exam;
+  ExamPage({super.key, required this.exam});
 
   @override
   State<ExamPage> createState() => _ExamPageState();
@@ -42,6 +45,7 @@ class _ExamPageState extends State<ExamPage> {
     super.dispose(); // Call the superclass dispose method
   }
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Exam'),
@@ -55,7 +59,7 @@ class _ExamPageState extends State<ExamPage> {
           ),
          TimerCountdown(
          format: CountDownTimerFormat.minutesSeconds,
-         endTime: DateTime.now().add(Duration(seconds: timeleft)),
+         endTime: DateTime.now().add(Duration(seconds: widget.exam.duration??30)),
          onEnd: (){
            showDialog(
                context: context,

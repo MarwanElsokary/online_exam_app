@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:online_exam/Features/Home/presentation/pages/Home_Page.dart';
 import 'Core/DI/DI.dart';
 import 'Core/Locale/PrefsHelper.dart';
@@ -11,6 +13,8 @@ import 'core/Routs/App_Routs_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+ await Hive.initFlutter();
+
   await PrefsHelper.init();
   Bloc.observer = MyBlocObserver();
   configureDependencies();

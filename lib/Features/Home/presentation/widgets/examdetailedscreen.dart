@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/Core/Remote/response/responses/exam_response.dart' as examResponse;
 import 'package:online_exam/Core/Resources/ColorsManager.dart';
 import 'package:online_exam/Core/Resources/stringsManager.dart';
+import 'package:online_exam/Core/Routs/App_Routs_names.dart';
+import 'package:online_exam/Core/Routs/App_Routs_page.dart';
+import 'package:online_exam/Features/Exam/presentation/pages/Exam_Page.dart';
 
 class examdetailedscreen extends StatelessWidget{
-  const examdetailedscreen({super.key});
+  final examResponse.Exam exam;
+  const examdetailedscreen({super.key,  required this.exam});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -88,7 +94,14 @@ class examdetailedscreen extends StatelessWidget{
 
 
       ElevatedButton(
-        onPressed:(){},
+        onPressed:(){
+
+          Navigator.pushNamed(context,App_Routs_names.ExamRoute,arguments: exam
+
+
+
+          );
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorsManager.secondaryColor,
           textStyle: TextStyle(color: Colors.white),

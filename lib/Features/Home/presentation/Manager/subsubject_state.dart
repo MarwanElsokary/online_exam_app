@@ -10,6 +10,6 @@ class SubsubjectsErrorState extends SubsubjectState{
   SubsubjectsErrorState(this.error);
 }
 class SubsubjectsSuccesState extends SubsubjectState{
-  Exams exams;
+ List <Exam> exams;
   SubsubjectsSuccesState(this.exams);
 }

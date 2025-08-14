@@ -4,7 +4,7 @@ import 'package:online_exam/Features/Home/domain/repositories/questions_repo.dar
 import '../../../../Core/Remote/response/responses/questions_response.dart';
 @injectable
 import 'check_questions_usecase.dart';
-
+@injectable
 class QuestionsUsecase {
   QuestionsRepo questionsRepo;
 @factoryMethod

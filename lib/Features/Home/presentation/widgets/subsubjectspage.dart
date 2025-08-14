@@ -6,10 +6,11 @@ import 'package:online_exam/Core/Widgets/SubSubjectWidget.dart';
 import 'package:online_exam/Features/Home/domain/model/exams.dart';
 import 'package:online_exam/Features/Home/presentation/Manager/subsubject_cubit.dart';
 
+import '../../../../Core/Remote/response/responses/exam_response.dart';
 import '../../../../Core/Routs/App_Routs_names.dart';
 
 class SubSubjectscreen extends StatelessWidget {
-  List<Exams> exams = [];
+  List<Exam> exams = [];
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +45,14 @@ class SubSubjectscreen extends StatelessWidget {
               return Center(child: Text(state.error));
             }
             if (state is SubsubjectsSuccesState) {
-              exams = state.exams as List<Exams>;
+              exams = state.exams;
             }
             return ListView.builder(
-              itemCount: 10, // Example count
+              itemCount: exams.length, // Example count
               itemBuilder: (context, index) => SubSubjectWidget(
-                  subSubjectName: exams[index].title,
-                  subSubjectDescription: exams[index].subject,
-                  questionCount: exams[index].numberOfQuestions,
-                  timer: exams[index].duration),
+                 exam: exams[index],
+
+              ),
             );
             //else return ;
           },

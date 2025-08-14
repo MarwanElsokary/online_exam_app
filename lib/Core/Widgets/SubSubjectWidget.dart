@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/Core/Remote/response/responses/exam_response.dart';
 import 'package:online_exam/Core/Resources/ColorsManager.dart';
 
 import '../Routs/App_Routs_names.dart';
 
 class SubSubjectWidget extends StatelessWidget{
-  String? subSubjectName;
-  String? subSubjectDescription;
-  int ?questionCount;
-  int ?timer;
+  Exam exam;
   SubSubjectWidget({
     super.key,
-    required this.subSubjectName,
-    required this.subSubjectDescription,
-    required this.questionCount,
-    required this.timer,
+    required this.exam
   });
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        debugPrint(" duration:${exam.duration}");
         // Navigate to the exam details page or perform any action
-        Navigator.pushNamed(context,App_Routs_names.examdetailsRoute
+        Navigator.pushNamed(context,App_Routs_names.examdetailsRoute,arguments: exam
 
 
 
@@ -52,7 +48,7 @@ class SubSubjectWidget extends StatelessWidget{
                         Column(
                           children: [
                             Text(
-                             subSubjectName?? " ",
+                             exam.title?? " ",
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -61,7 +57,7 @@ class SubSubjectWidget extends StatelessWidget{
                             ),
                             const SizedBox(height: 5,),
                             Text(
-                              questionCount.toString(),
+                              exam.subject??" ",
                               style: const TextStyle(
                                 fontSize: 13,
                                 color: ColorsManager.tretaryColor,
@@ -70,7 +66,7 @@ class SubSubjectWidget extends StatelessWidget{
                           ],
                         ),
                        Spacer(flex: 2,),
-                        Text(timer.toString()??" ",style: TextStyle(fontSize: 13,
+                        Text(exam.duration.toString()??" ",style: TextStyle(fontSize: 13,
                         fontWeight: FontWeight.w400,
                           color: ColorsManager.secondaryColor
                         ),)
@@ -79,7 +75,7 @@ class SubSubjectWidget extends StatelessWidget{
 
                      const SizedBox(height: 10,),
                     Text(
-                      subSubjectDescription??" ",
+                    exam.subject??" ",
                       style: const TextStyle(
                         fontSize: 13,
                         color: ColorsManager.tretaryColor,

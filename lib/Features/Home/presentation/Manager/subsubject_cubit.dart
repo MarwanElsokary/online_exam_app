@@ -8,6 +8,8 @@ import 'package:online_exam/Features/Home/domain/model/subject.dart';
 import 'package:online_exam/Features/Home/domain/repositories/exam_repo.dart';
 import 'package:online_exam/Features/Home/domain/usecases/exams_usecase.dart';
 
+import '../../../../Core/Remote/response/responses/exam_response.dart';
+
 part 'subsubject_state.dart';
 
 @injectable
@@ -21,13 +23,13 @@ class SubsubjectCubit extends Cubit<SubsubjectState> {
 
   ExamRepo get examRepository => examUseCase.examRepo;
   // solve this issue by using the call method on examUseCase
-  List<Exams> exams = [];
+  List<Exam> exams = [];
 
   Future<void> getallexams() async {
     emit(SubsubjectsLoadingState());
     try {
-      exams = (await examUseCase.invoke()).cast<Exams>();
-      emit(SubsubjectsSuccesState(exams as Exams));
+      exams = (await examUseCase.invoke());
+      emit(SubsubjectsSuccesState(exams ));
     } catch (error) {
       emit(SubsubjectsErrorState(error.toString()));
     }

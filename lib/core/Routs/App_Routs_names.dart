@@ -8,4 +8,5 @@ class App_Routs_names {
   static const String SubSubjectsRoute = "/subsubjectspage";
   static const String examdetailsRoute = "/examdetailedscreen";
   static const String profileRoute = "/profile";
+  static const String ExamRoute = "/Exam_Page";
 }
