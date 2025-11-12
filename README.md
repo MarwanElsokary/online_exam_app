@@ -1,118 +1,155 @@
-🧠 Online Exam — Clean Architecture Based Assessment App
 
-A modern Flutter application built to simplify and digitize the exam experience for both students and instructors.
-The app is structured with Clean Architecture, ensuring scalability, maintainability, and clean separation of concerns.
+🎓 Online Exam App — Smart Quiz & Assessment Platform
+A modern Flutter application built to help students, teachers, and admins manage and take online exams.
+The app leverages Firebase for authentication, data storage, and real-time updates, following a Clean Architecture structure.
 
-
-
-
-
-
-
-
-📘 Overview
-
-Online Exam App is a digital platform designed for educational institutions and e-learning environments.
-Teachers can create and publish exams, while students can attend, submit, and view their scores instantly.
-The app follows Clean Architecture principles and integrates robust state management, dependency injection, and error handling.
+📝 Overview
+Online Exam App is an educational platform connecting students with teachers for taking and managing exams.
+Teachers can create exams with multiple question types, students can participate and view results instantly, and admins can oversee users and exams.
+The app follows Clean Architecture with Firebase as the backend for a secure, scalable experience.
 
 📱 Features
 
-🔐 User authentication (Login / Register)
 
-👩‍🏫 Two main roles — Instructor & Student
+🔐 Firebase Authentication (login/register by role)
 
-🧩 Create, edit, and delete exams
 
-❓ Add multiple-choice questions dynamically
+👩‍🎓 Three user roles — Student, Teacher, Admin
+
+
+📝 Teachers create, edit, and delete exams
+
 
 ⏱️ Timed exams with automatic submission
 
-📊 Real-time result calculation and feedback
 
-🌐 Offline-first architecture with local caching
+🧮 Students answer multiple-choice, true/false, and short-answer questions
 
-💉 Dependency Injection (get_it, injectable)
 
-🌍 Networking via Dio + Retrofit
+📊 Instant grading and detailed results
 
-⚙️ State management using Bloc / Cubit
 
-🧠 Functional programming with dartz
+💾 Firebase Firestore & Storage integration
+
 
 🧱 Clean Architecture (Data, Domain, Presentation layers)
 
+
+💬 Toasts, responsive UI, and Material Design
+
+
+🧭 Offline caching with Hive
+
+
+🔔 Push notifications for new exams and results
+
+
+
 🧠 Tech Stack
+
 
 Frontend: Flutter (Dart)
 
-Architecture: Clean Architecture
 
-Networking: Dio + Retrofit
+Backend: Firebase Firestore & Authentication
 
-Dependency Injection: get_it + injectable
 
 State Management: Bloc / Cubit
 
-Functional Programming: dartz
 
-Local Storage: SharedPreferences
+Local Storage: Hive
 
-Connectivity: connectivity_plus
 
-Logging: logger + pretty_dio_logger
+Networking: Dio
+
+
+Architecture: Clean Architecture (Domain, Data, Presentation)
+
+
+Dependency Injection: GetIt
+
+
 
 🚀 Getting Started
 Prerequisites
 
+
 Flutter SDK (>=3.0)
+
 
 Android Studio / VS Code
 
+
+Firebase project configured (Auth + Firestore)
+
+
 Emulator or physical device
+
 
 Installation
 
-Clone the repository:
 
-git clone https://github.com/MarwanElsokary/Online-Exam.git
+Clone the repository:
+git clone https://github.com/MarwanElsokary/Online-Exam-App.git
+
 
 
 Navigate to the project directory:
+cd online_exam_app
 
-cd online_exam
 
 
 Install dependencies:
-
 flutter pub get
 
 
-Run code generation:
 
-flutter pub run build_runner build --delete-conflicting-outputs
+Run the app:
+flutter run
+
+
+
+Testing
 
 
 Run the app:
+flutter test
 
-flutter run
+
+
+If Firebase isn’t set up yet, add your configuration files:
+
+
+android/app/google-services.json
+
+
+ios/Runner/GoogleService-Info.plist
+
+
 
 🤝 Contributing
 
+
 Fork the repo
+
 
 Create your feature branch (git checkout -b feature/YourFeature)
 
+
 Commit changes (git commit -m 'Add some feature')
+
 
 Push to branch (git push origin feature/YourFeature)
 
+
 Open a Pull Request
 
-👨‍💻 Author
 
+
+👨‍💻 Author
 Marwan Yasser ElSokary
 Flutter Developer
 GitHub Profile
 
-🧩 Online Exam — Making assessments smarter, faster, and fairer.
+
+🪄 Online Exam App — empowering education through smart assessments.
