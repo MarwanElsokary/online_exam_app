@@ -1,56 +1,67 @@
-🧠 Online Exam — Smart Examination Management App
+🧠 Online Exam — Clean Architecture Based Assessment App
 
-A modern Flutter application built using Clean Architecture for managing and conducting online exams efficiently.
-The app allows students to take exams, view results, and track performance, while instructors can create and manage exams easily.
+A modern Flutter application built to simplify and digitize the exam experience for both students and instructors.
+The app is structured with Clean Architecture, ensuring scalability, maintainability, and clean separation of concerns.
 
 
-📚 Overview
 
-Online Exam App is a platform designed to digitize the examination process.
-It enables teachers to create exams, add questions, and manage results, while students can attend exams securely, track their performance, and review answers.
-The app follows Clean Architecture principles, ensuring scalability, testability, and separation of concerns.
 
-🎯 Features
 
-🔐 User Authentication (Login / Register)
 
-🧑‍🏫 Two main roles — Instructor & Student
 
-📝 Create, edit, and delete exams
 
-❓ Add multiple choice questions dynamically
+📘 Overview
 
-⏱️ Timed exams with auto-submit
+Online Exam App is a digital platform designed for educational institutions and e-learning environments.
+Teachers can create and publish exams, while students can attend, submit, and view their scores instantly.
+The app follows Clean Architecture principles and integrates robust state management, dependency injection, and error handling.
 
-📊 Result calculation and detailed feedback
+📱 Features
 
-🌐 Offline support with local caching
+🔐 User authentication (Login / Register)
 
-🧱 Clean Architecture (Data, Domain, Presentation)
+👩‍🏫 Two main roles — Instructor & Student
 
-💉 Dependency Injection with get_it & injectable
+🧩 Create, edit, and delete exams
 
-🌍 Network handling using Dio + Retrofit
+❓ Add multiple-choice questions dynamically
 
-⚙️ State Management with Bloc / Cubit
+⏱️ Timed exams with automatic submission
 
-🧠 Functional programming patterns via dartz
+📊 Real-time result calculation and feedback
 
-📶 Connectivity awareness with connectivity_plus
+🌐 Offline-first architecture with local caching
 
-💾 Local storage via SharedPreferences
+💉 Dependency Injection (get_it, injectable)
 
-⚙️ Tech Stack
-Layer	Tools / Packages
-Architecture	Clean Architecture
-State Management	Flutter Bloc
-Networking	Dio, Retrofit
-Dependency Injection	get_it, injectable
-Functional Programming	dartz
-Caching & Storage	SharedPreferences
-Connectivity	connectivity_plus
-Logging	logger, pretty_dio_logger
-Code Generation	build_runner, json_serializable
+🌍 Networking via Dio + Retrofit
+
+⚙️ State management using Bloc / Cubit
+
+🧠 Functional programming with dartz
+
+🧱 Clean Architecture (Data, Domain, Presentation layers)
+
+🧠 Tech Stack
+
+Frontend: Flutter (Dart)
+
+Architecture: Clean Architecture
+
+Networking: Dio + Retrofit
+
+Dependency Injection: get_it + injectable
+
+State Management: Bloc / Cubit
+
+Functional Programming: dartz
+
+Local Storage: SharedPreferences
+
+Connectivity: connectivity_plus
+
+Logging: logger + pretty_dio_logger
+
 🚀 Getting Started
 Prerequisites
 
@@ -88,22 +99,13 @@ flutter run
 
 🤝 Contributing
 
-Fork the repository
+Fork the repo
 
-Create a new feature branch
+Create your feature branch (git checkout -b feature/YourFeature)
 
-git checkout -b feature/YourFeature
+Commit changes (git commit -m 'Add some feature')
 
-
-Commit changes
-
-git commit -m "Add YourFeature"
-
-
-Push to branch
-
-git push origin feature/YourFeature
-
+Push to branch (git push origin feature/YourFeature)
 
 Open a Pull Request
 
@@ -113,4 +115,4 @@ Marwan Yasser ElSokary
 Flutter Developer
 GitHub Profile
 
-🧠 Online Exam — Empowering modern learning through technology.
+🧩 Online Exam — Making assessments smarter, faster, and fairer.
